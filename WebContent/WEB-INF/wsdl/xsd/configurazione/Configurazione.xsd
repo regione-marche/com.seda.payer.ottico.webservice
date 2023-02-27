@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://dati.configurazione.webservice.ottico.payer.seda.com"
+			xmlns:tns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+			elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+<!-- 1. -->
+	<xsd:element name="CreaAssociaTemplateRequest">
+		<xsd:complexType>
+			<xsd:sequence> 
+				<xsd:element name="codiceSocieta" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceUtente" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceEnte" type="xsd:string" nillable="true" />
+				<xsd:element name="tipoBollettino" type="xsd:string" nillable="true" />
+				<xsd:element name="dataInizio" type="xsd:dateTime" nillable="true" />
+				<xsd:element name="dataFine" type="xsd:dateTime" nillable="true" />
+				<xsd:element name="tipologiaServizio" type="xsd:string" nillable="true" />
+				<xsd:element name="tipoDocumento" type="xsd:string" nillable="true" />
+				<xsd:element name="riferimentoTemplate" type="xsd:string" nillable="true" />
+				<!--  M --> 
+				<xsd:element name="dataUltimoAgg" type="xsd:dateTime" nillable="true" />
+				<xsd:element name="operatore" type="xsd:string" nillable="true" />
+				</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CreaAssociaTemplateResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="response" type="tns:ResponseType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+<!-- 2. -->
+	<xsd:element name="CreaParametriOtticoRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="codiceSocieta" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceUtente" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceEnte" type="xsd:string" nillable="true" />
+				<xsd:element name="flagDocumento" type="xsd:string" nillable="true" />
+				<xsd:element name="flagRelata" type="xsd:string" nillable="true" />
+				<xsd:element name="flagBollettino" type="xsd:string" nillable="true" />
+				<xsd:element name="flagQuietanza" type="xsd:string" nillable="true" />
+				<xsd:element name="flagWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="indirizzoWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="userWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="passwordWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="emailAmministratoreOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="directoryFlussiDatiOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="directoryFlussiDatiOtticoOld" type="xsd:string" nillable="true" />
+				<xsd:element name="directoryFlussiImmaginiOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="directoryFlussiImmaginiOtticoOld" type="xsd:string" nillable="true" />
+				<xsd:element name="directoryImmaginiOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="directoryLogOtticoOld" type="xsd:string" nillable="true" />
+					<!--  M --> 
+				<xsd:element name="dataUltimoAgg" type="xsd:dateTime" nillable="true" />
+				<xsd:element name="operatore" type="xsd:string" nillable="true" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="CreaParametriOtticoResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="response" type="tns:ResponseType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+<!-- 3. -->
+	<xsd:element name="EliminaAssociaTemplateRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="chiaveTemplate" type="xsd:string" nillable="true" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="EliminaAssociaTemplateResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="response" type="tns:ResponseType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+<!-- 4. -->
+	<xsd:element name="EliminaParametriOtticoRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="codiceSocieta" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceUtente" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceEnte" type="xsd:string" nillable="true" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="EliminaParametriOtticoResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="response" type="tns:ResponseType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+<!-- 5. -->
+	<xsd:element name="ListaAssociaTemplateRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="codiceSocieta" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceUtente" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceEnte" type="xsd:string" nillable="true" />
+				<xsd:element name="siglaProvincia" type="xsd:string" nillable="true" />
+				<xsd:element name="dataInizio" type="xsd:dateTime" nillable="true" />
+				<xsd:element name="dataFine" type="xsd:dateTime" nillable="true" />
+				<xsd:element name="tipologiaServizio" type="xsd:string" nillable="true" />
+				<xsd:element name="tipoDocumento" type="xsd:string" nillable="true" />
+					<!-- M -->
+				<xsd:element name="rowsPerPage" type="xsd:int" nillable="true"/>
+				<xsd:element name="pageNumber" type="xsd:int" nillable="true"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="ListaAssociaTemplateResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="listaTemplate" type="tns:ListResponseType" />	
+				<!-- <xsd:element name="listaTemplate" type="tns:DocTemplateType" minOccurs="0" nillable="true" maxOccurs="unbounded" />-->			
+				<xsd:element name="response" type="tns:ResponseType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+<!-- 6. -->
+	<xsd:element name="ListaParametriOtticoRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="codiceSocieta" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceUtente" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceEnte" type="xsd:string" nillable="true" />
+				<xsd:element name="siglaProvincia" type="xsd:string" nillable="true" />
+				<xsd:element name="flagWebServiceOttico" type="xsd:string" nillable="true" />
+				<!-- M -->
+				<xsd:element name="rowsPerPage" type="xsd:int" nillable="true"/>
+				<xsd:element name="pageNumber" type="xsd:int" nillable="true"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="ListaParametriOtticoResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="listaOttico" type="tns:ListResponseType" />
+				<xsd:element name="response" type="tns:ResponseType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+<!-- 7. -->
+	<xsd:element name="ModificaAssociaTemplateRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="chiaveTemplate" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceSocieta" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceUtente" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceEnte" type="xsd:string" nillable="true" />
+				<xsd:element name="tipoBollettino" type="xsd:string" nillable="true" />
+				<xsd:element name="dataInizio" type="xsd:dateTime" nillable="true" />
+				<xsd:element name="dataFine" type="xsd:dateTime" nillable="true" />
+				<xsd:element name="tipologiaServizio" type="xsd:string" nillable="true" />
+				<xsd:element name="tipoDocumento" type="xsd:string" nillable="true" />
+				<xsd:element name="riferimentoTemplate" type="xsd:string" nillable="true" />
+					<!--  M --> 
+				<xsd:element name="dataUltimoAgg" type="xsd:dateTime" nillable="true" />
+				<xsd:element name="operatore" type="xsd:string" nillable="true" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="ModificaAssociaTemplateResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="response" type="tns:ResponseType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+
+<!-- 8. -->
+	<xsd:element name="ModificaParametriOtticoRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="codiceSocieta" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceUtente" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceEnte" type="xsd:string" nillable="true" />
+				<xsd:element name="flagDocumento" type="xsd:string" nillable="true" />
+				<xsd:element name="flagRelata" type="xsd:string" nillable="true" />
+				<xsd:element name="flagBollettino" type="xsd:string" nillable="true" />
+				<xsd:element name="flagQuietanza" type="xsd:string" nillable="true" />
+				<xsd:element name="flagWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="indirizzoWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="userWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="passwordWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="emailAmministratoreOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="directoryFlussiDatiOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="directoryFlussiDatiOtticoOld" type="xsd:string" nillable="true" />
+				<xsd:element name="directoryFlussiImmaginiOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="directoryFlussiImmaginiOtticoOld" type="xsd:string" nillable="true" />
+				<xsd:element name="directoryImmaginiOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="directoryLogOtticoOld" type="xsd:string" nillable="true" />
+				<!--  M --> 
+				<xsd:element name="dataUltimoAgg" type="xsd:dateTime" nillable="true" />
+				<xsd:element name="operatore" type="xsd:string" nillable="true" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="ModificaParametriOtticoResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="response" type="tns:ResponseType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<!-- 9. -->
+		<xsd:element name="DettaglioParametriOtticoRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="codiceSocieta" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceUtente" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceEnte" type="xsd:string" nillable="true" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="DettaglioParametriOtticoResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="codiceSocieta" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceUtente" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceEnte" type="xsd:string" nillable="true" />
+				<xsd:element name="flagDocumento" type="xsd:string" nillable="true" />
+				<xsd:element name="flagRelata" type="xsd:string" nillable="true" />
+				<xsd:element name="flagBollettino" type="xsd:string" nillable="true" />
+				<xsd:element name="flagQuietanza" type="xsd:string" nillable="true" />
+				<xsd:element name="flagWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="indirizzoWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="userWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="passwordWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="emailAmministratoreOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="directoryFlussiDatiOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="directoryFlussiDatiOtticoOld" type="xsd:string" nillable="true" />
+				<xsd:element name="directoryFlussiImmaginiOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="directoryFlussiImmaginiOtticoOld" type="xsd:string" nillable="true" />
+				<xsd:element name="directoryImmaginiOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="directoryLogOtticoOld" type="xsd:string" nillable="true" />
+				<xsd:element name="response" type="tns:ResponseType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<!-- 10. -->
+	<xsd:element name="DettaglioAssociaTemplateRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="chiaveTemplate" type="xsd:string" nillable="true" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="DettaglioAssociaTemplateResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="codiceSocieta" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceUtente" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceEnte" type="xsd:string" nillable="true" />
+				<xsd:element name="tipoBollettino" type="xsd:string" nillable="true" />
+				<xsd:element name="dataInizio" type="xsd:dateTime" nillable="true" />
+				<xsd:element name="dataFine" type="xsd:dateTime" nillable="true" />
+				<xsd:element name="tipologiaServizio" type="xsd:string" nillable="true" />
+				<xsd:element name="tipoDocumento" type="xsd:string" nillable="true" />
+				<xsd:element name="riferimentoTemplate" type="xsd:string" nillable="true" />
+				<xsd:element name="response" type="tns:ResponseType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="VerificaAssociaTemplateRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="tipoDocumento" type="xsd:string" nillable="false" minOccurs="1" maxOccurs="1" />
+				<xsd:element name="codiceSocieta" type="xsd:string" nillable="false" minOccurs="1" maxOccurs="1" />
+				<xsd:element name="tipologiaServizio" type="xsd:string" nillable="false" minOccurs="1" maxOccurs="1" />
+				<xsd:element name="codiceUtente" type="xsd:string" nillable="false" minOccurs="1" maxOccurs="1" />
+				<xsd:element name="codiceEnte" type="xsd:string" nillable="false" minOccurs="1" maxOccurs="1" />
+				<xsd:element name="dataInizio" type="xsd:dateTime" nillable="false" minOccurs="1" maxOccurs="1" />
+				<xsd:element name="dataFine" type="xsd:dateTime" nillable="false" minOccurs="1" maxOccurs="1" />
+				<xsd:element name="chiaveTemplate" type="xsd:string" nillable="true" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="VerificaAssociaTemplateResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="wasExist" type="xsd:boolean" nillable="false" minOccurs="1" maxOccurs="1" />
+				<xsd:element name="response" type="tns:ResponseType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+<!-- Document Template Type -->
+<!-- MODIFCA -->
+<!--	<xsd:complexType name="DocTemplateType">-->
+<!--		<xsd:sequence>-->
+<!--			<xsd:element name="codiceSocieta" type="xsd:string" nillable="true" />-->
+<!--			<xsd:element name="codiceUtente" type="xsd:string" nillable="true" />-->
+<!--			<xsd:element name="codiceEnte" type="xsd:string" nillable="true" />-->
+<!--			<xsd:element name="flagDocumento" type="xsd:string" nillable="true" />-->
+<!--			<xsd:element name="flagRelata" type="xsd:string" nillable="true" />-->
+<!--			<xsd:element name="flagBollettino" type="xsd:string" nillable="true" />-->
+<!--			<xsd:element name="flagQuietanza" type="xsd:string" nillable="true" />-->
+<!--			<xsd:element name="flagWebServiceOttico" type="xsd:string" nillable="true" />-->
+<!--			<xsd:element name="indirizzoWebServiceOttico" type="xsd:string" nillable="true" />-->
+<!--			<xsd:element name="userWebServiceOttico" type="xsd:string" nillable="true" />-->
+<!--			<xsd:element name="passwordWebServiceOttico" type="xsd:string" nillable="true" />-->
+<!--			<xsd:element name="emailAmministratoreOttico" type="xsd:string" nillable="true" />-->
+<!--			<xsd:element name="directoryFlussiDatiOttico" type="xsd:string" nillable="true" />-->
+<!--			<xsd:element name="directoryFlussiDatiOtticoOld" type="xsd:string" nillable="true" />-->
+<!--			<xsd:element name="directoryFlussiImmaginiOttico" type="xsd:string" nillable="true" />-->
+<!--			<xsd:element name="directoryFlussiImmaginiOtticoOld" type="xsd:string" nillable="true" />-->
+<!--			<xsd:element name="directoryImmaginiOttico" type="xsd:string" nillable="true" />-->
+<!--			<xsd:element name="directoryLogOtticoOld" type="xsd:string" nillable="true" />-->  
+<!--			<xsd:element name="dataUltimoAgg" type="xsd:dateTime" nillable="true" />-->
+<!--			<xsd:element name="operatore" type="xsd:string" nillable="true" />-->
+<!--		</xsd:sequence>-->
+<!--	</xsd:complexType>-->
+<!-- MODIFICA -->
+<!--	<xsd:complexType name="ListaParametriOtticoResponseType">-->
+<!--		<xsd:sequence>-->
+<!--			<xsd:element minOccurs="0" name="listXml" maxOccurs="1" nillable="true" type="xsd:string"/>-->
+<!--			<xsd:element name="pageInfo" minOccurs="0" maxOccurs="1">-->
+<!--				<xsd:complexType>-->
+<!--					<xsd:sequence>-->
+<!--						<xsd:element name="firstRow" type="xsd:int"/>-->
+<!--						<xsd:element name="lastRow" type="xsd:int"/>-->
+<!--						<xsd:element name="numRows" type="xsd:int"/>-->
+<!--						<xsd:element name="numPages" type="xsd:int"/>-->
+<!--						<xsd:element name="pageNumber" type="xsd:int"/>-->
+<!--					</xsd:sequence>-->
+<!--				</xsd:complexType>-->
+<!--			</xsd:element>-->
+<!--		</xsd:sequence>-->
+<!--	</xsd:complexType>-->
+	
+	<xsd:complexType name="ListResponseType">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="listXml" maxOccurs="1" nillable="true" type="xsd:string"/>
+			<xsd:element name="pageInfo" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="firstRow" type="xsd:int"/>
+						<xsd:element name="lastRow" type="xsd:int"/>
+						<xsd:element name="numRows" type="xsd:int"/>
+						<xsd:element name="numPages" type="xsd:int"/>
+						<xsd:element name="pageNumber" type="xsd:int"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+<!-- MOD -->
+	<xsd:complexType name="ResponseType">
+		<xsd:sequence>
+			<xsd:element name="retCode">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+      					<xsd:length value="2"></xsd:length>
+      					<xsd:enumeration value="00">
+      						<xsd:annotation><!-- Request execute successfully --></xsd:annotation>
+      					</xsd:enumeration>
+      					<xsd:enumeration value="01">
+      						<xsd:annotation><!-- Generic error --></xsd:annotation>
+      					</xsd:enumeration>
+      				</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="retMessage">
+				<xsd:annotation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="0"></xsd:minLength>
+						<xsd:maxLength value="1024"></xsd:maxLength>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

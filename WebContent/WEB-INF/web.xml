@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="com.seda.payer.ottico.webservice" version="2.5" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_5.xsd">
+	<display-name>com.seda.payer.ottico.webservice</display-name>
+	<distributable/>
+	
+	<servlet>
+		<display-name>Apache-Axis Servlet</display-name>
+		<servlet-name>AxisServlet</servlet-name>
+		<servlet-class>org.apache.axis.transport.http.AxisServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AxisServlet</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+	
+	<listener>
+		<listener-class>com.seda.payer.ottico.webservice.listener.ApplicationListener</listener-class>
+	</listener>
+	
+	<!-- <context-param>
+		<description>Root di configurazione per il properties tree</description>
+		<param-name>configroot</param-name>
+		<param-value>D:/ConfigFiles/Payer/iargenio/payerOtticoWS/otticoWsRoot.properties</param-value>
+	</context-param> -->
+	<resource-ref id="ResRef_Web_PDS">
+		<res-ref-name>payerDataSource</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref>
+     <resource-ref id="ResRef_Web_PDS3">
+		<res-ref-name>payerDataSourceMySql</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref>
+</web-app>

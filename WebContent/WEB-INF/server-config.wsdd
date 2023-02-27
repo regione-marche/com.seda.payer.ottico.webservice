@@ -1,0 +1,703 @@
+<ns1:deployment 
+xmlns="http://xml.apache.org/axis/wsdd/" 
+xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" 
+xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <!--ns1:parameter name="attachments.Directory" value="temp"/-->
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+
+<!-- Copy here of the content file deploy.wsdd tag <service/> -->
+
+ <service name="ottico" provider="java:RPC" style="document" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://source.webservice.ottico.payer.seda.com"/>
+      <parameter name="wsdlServiceElement" value="OtticoService"/>
+      <parameter name="schemaQualified" value="http://dati.webservice.ottico.payer.seda.com,http://srv.webservice.ottico.payer.seda.com"/>
+      <parameter name="schemaUnqualified" value="http://source.webservice.ottico.payer.seda.com"/>
+      <parameter name="wsdlServicePort" value="OtticoPort"/>
+      <parameter name="className" value="com.seda.payer.ottico.webservice.source.Ottico"/>
+	  <parameter name="wsdlPortType" value="OtticoInterface"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="elaboraFlussiImg" qname="elaboraFlussiImg" returnQName="retNS:ElaboraFlussiImgResponse" xmlns:retNS="http://dati.webservice.ottico.payer.seda.com" returnType="rtns:>ElaboraFlussiImgResponse" xmlns:rtns="http://dati.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:ElaboraFlussiImgRequest" xmlns:pns="http://dati.webservice.ottico.payer.seda.com" type="tns:>ElaboraFlussiImgRequest" xmlns:tns="http://dati.webservice.ottico.payer.seda.com"/>
+        <fault name="OtticoFaultException" qname="fns:Fault" xmlns:fns="http://srv.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <operation name="logElaborazioneFlussiImg" qname="logElaborazioneFlussiImg" returnQName="retNS:LogElaborazioneFlussiImgResponse" xmlns:retNS="http://dati.webservice.ottico.payer.seda.com" returnType="rtns:>LogElaborazioneFlussiImgResponse" xmlns:rtns="http://dati.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:LogElaborazioneFlussiImgRequest" xmlns:pns="http://dati.webservice.ottico.payer.seda.com" type="tns:>LogElaborazioneFlussiImgRequest" xmlns:tns="http://dati.webservice.ottico.payer.seda.com"/>
+        <fault name="OtticoFaultException" qname="fns:Fault" xmlns:fns="http://srv.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <operation name="recuperaTemplate" qname="recuperaTemplate" returnQName="retNS:RecuperaTemplateResponse" xmlns:retNS="http://dati.webservice.ottico.payer.seda.com" returnType="rtns:>RecuperaTemplateResponse" xmlns:rtns="http://dati.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:RecuperaTemplateRequest" xmlns:pns="http://dati.webservice.ottico.payer.seda.com" type="tns:>RecuperaTemplateRequest" xmlns:tns="http://dati.webservice.ottico.payer.seda.com"/>
+        <fault name="OtticoFaultException" qname="fns:Fault" xmlns:fns="http://srv.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <operation name="stampaBollettino" qname="stampaBollettino" returnQName="retNS:StampaBollettinoResponse" xmlns:retNS="http://dati.webservice.ottico.payer.seda.com" returnType="rtns:>StampaBollettinoResponse" xmlns:rtns="http://dati.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:StampaBollettinoRequest" xmlns:pns="http://dati.webservice.ottico.payer.seda.com" type="tns:>StampaBollettinoRequest" xmlns:tns="http://dati.webservice.ottico.payer.seda.com"/>
+        <fault name="OtticoFaultException" qname="fns:Fault" xmlns:fns="http://srv.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <operation name="stampaDocumento" qname="stampaDocumento" returnQName="retNS:StampaDocumentoResponse" xmlns:retNS="http://dati.webservice.ottico.payer.seda.com" returnType="rtns:>StampaDocumentoResponse" xmlns:rtns="http://dati.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:StampaDocumentoRequest" xmlns:pns="http://dati.webservice.ottico.payer.seda.com" type="tns:>StampaDocumentoRequest" xmlns:tns="http://dati.webservice.ottico.payer.seda.com"/>
+        <fault name="OtticoFaultException" qname="fns:Fault" xmlns:fns="http://srv.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <operation name="stampaQuietanza" qname="stampaQuietanza" returnQName="retNS:StampaQuietanzaResponse" xmlns:retNS="http://dati.webservice.ottico.payer.seda.com" returnType="rtns:>StampaQuietanzaResponse" xmlns:rtns="http://dati.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:StampaQuietanzaRequest" xmlns:pns="http://dati.webservice.ottico.payer.seda.com" type="tns:>StampaQuietanzaRequest" xmlns:tns="http://dati.webservice.ottico.payer.seda.com"/>
+        <fault name="OtticoFaultException" qname="fns:Fault" xmlns:fns="http://srv.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <operation name="stampaRelata" qname="stampaRelata" returnQName="retNS:StampaRelataResponse" xmlns:retNS="http://dati.webservice.ottico.payer.seda.com" returnType="rtns:>StampaRelataResponse" xmlns:rtns="http://dati.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:StampaRelataRequest" xmlns:pns="http://dati.webservice.ottico.payer.seda.com" type="tns:>StampaRelataRequest" xmlns:tns="http://dati.webservice.ottico.payer.seda.com"/>
+        <fault name="OtticoFaultException" qname="fns:Fault" xmlns:fns="http://srv.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <operation name="verificaConfigurazioneOttico" qname="verificaConfigurazioneOttico" returnQName="retNS:VerificaConfigurazioneOtticoResponse" xmlns:retNS="http://dati.webservice.ottico.payer.seda.com" returnType="rtns:>VerificaConfigurazioneOtticoResponse" xmlns:rtns="http://dati.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:VerificaConfigurazioneOtticoRequest" xmlns:pns="http://dati.webservice.ottico.payer.seda.com" type="tns:>VerificaConfigurazioneOtticoRequest" xmlns:tns="http://dati.webservice.ottico.payer.seda.com"/>
+        <fault name="OtticoFaultException" qname="fns:Fault" xmlns:fns="http://srv.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <operation name="verificaFlusso" qname="verificaFlusso" returnQName="retNS:VerificaFlussoResponse" xmlns:retNS="http://dati.webservice.ottico.payer.seda.com" returnType="rtns:>VerificaFlussoResponse" xmlns:rtns="http://dati.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:VerificaFlussoRequest" xmlns:pns="http://dati.webservice.ottico.payer.seda.com" type="tns:>VerificaFlussoRequest" xmlns:tns="http://dati.webservice.ottico.payer.seda.com"/>
+        <fault name="OtticoFaultException" qname="fns:Fault" xmlns:fns="http://srv.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <operation name="getListaImmagini" qname="getListaImmagini" returnQName="retNS:GetListaImmaginiResponse" xmlns:retNS="http://dati.webservice.ottico.payer.seda.com" returnType="rtns:>GetListaImmaginiResponse" xmlns:rtns="http://dati.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:GetListaImmaginiRequest" xmlns:pns="http://dati.webservice.ottico.payer.seda.com" type="tns:>GetListaImmaginiRequest" xmlns:tns="http://dati.webservice.ottico.payer.seda.com"/>
+        <fault name="OtticoFaultException" qname="fns:Fault" xmlns:fns="http://srv.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <operation name="stampaImmagineContenzioso" qname="stampaImmagineContenzioso" returnQName="retNS:StampaImmagineContenziosoResponse" xmlns:retNS="http://dati.webservice.ottico.payer.seda.com" returnType="rtns:>StampaImmagineContenziosoResponse" xmlns:rtns="http://dati.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:StampaImmagineContenziosoRequest" xmlns:pns="http://dati.webservice.ottico.payer.seda.com" type="tns:>StampaImmagineContenziosoRequest" xmlns:tns="http://dati.webservice.ottico.payer.seda.com"/>
+        <fault name="OtticoFaultException" qname="fns:Fault" xmlns:fns="http://srv.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <operation name="stampaImmagine" qname="stampaImmagine" returnQName="retNS:StampaImmagineResponse" xmlns:retNS="http://dati.webservice.ottico.payer.seda.com" returnType="rtns:>StampaImmagineResponse" xmlns:rtns="http://dati.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:StampaImmagineRequest" xmlns:pns="http://dati.webservice.ottico.payer.seda.com" type="tns:>StampaImmagineRequest" xmlns:tns="http://dati.webservice.ottico.payer.seda.com"/>
+        <fault name="OtticoFaultException" qname="fns:Fault" xmlns:fns="http://srv.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="stampaBollettino stampaImmagineContenzioso getListaImmagini verificaConfigurazioneOttico stampaRelata recuperaTemplate elaboraFlussiImg logElaborazioneFlussiImg stampaDocumento verificaFlusso stampaQuietanza stampaImmagine"/>
+
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>RecuperaTemplateResponse"
+        type="java:com.seda.payer.ottico.webservice.dati.RecuperaTemplateResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://srv.webservice.ottico.payer.seda.com"
+        qname="ns:FaultType"
+        type="java:com.seda.payer.ottico.webservice.srv.FaultType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>StampaQuietanzaRequest"
+        type="java:com.seda.payer.ottico.webservice.dati.StampaQuietanzaRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>VerificaFlussoResponse"
+        type="java:com.seda.payer.ottico.webservice.dati.VerificaFlussoResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>ResponseType>retCode"
+        type="java:com.seda.payer.ottico.webservice.dati.ResponseTypeRetCode"
+        serializer="org.apache.axis.encoding.ser.EnumSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.EnumDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>StampaQuietanzaResponse"
+        type="java:com.seda.payer.ottico.webservice.dati.StampaQuietanzaResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>StampaImmagineResponse"
+        type="java:com.seda.payer.ottico.webservice.dati.StampaImmagineResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>ElaboraFlussiImgResponse"
+        type="java:com.seda.payer.ottico.webservice.dati.ElaboraFlussiImgResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>StampaRelataResponse"
+        type="java:com.seda.payer.ottico.webservice.dati.StampaRelataResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>StampaDocumentoRequest"
+        type="java:com.seda.payer.ottico.webservice.dati.StampaDocumentoRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:ResponseType"
+        type="java:com.seda.payer.ottico.webservice.dati.ResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>StampaImmagineContenziosoRequest"
+        type="java:com.seda.payer.ottico.webservice.dati.StampaImmagineContenziosoRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>ElaboraFlussiImgRequest"
+        type="java:com.seda.payer.ottico.webservice.dati.ElaboraFlussiImgRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>StampaRelataRequest"
+        type="java:com.seda.payer.ottico.webservice.dati.StampaRelataRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>StampaBollettinoRequest"
+        type="java:com.seda.payer.ottico.webservice.dati.StampaBollettinoRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>VerificaConfigurazioneOtticoResponse"
+        type="java:com.seda.payer.ottico.webservice.dati.VerificaConfigurazioneOtticoResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>GetListaImmaginiResponse"
+        type="java:com.seda.payer.ottico.webservice.dati.GetListaImmaginiResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>StampaImmagineRequest"
+        type="java:com.seda.payer.ottico.webservice.dati.StampaImmagineRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>LogElaborazioneFlussiImgResponse"
+        type="java:com.seda.payer.ottico.webservice.dati.LogElaborazioneFlussiImgResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>VerificaFlussoRequest"
+        type="java:com.seda.payer.ottico.webservice.dati.VerificaFlussoRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>ResponseType>retMessage"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>LogElaborazioneFlussiImgRequest"
+        type="java:com.seda.payer.ottico.webservice.dati.LogElaborazioneFlussiImgRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>RecuperaTemplateRequest"
+        type="java:com.seda.payer.ottico.webservice.dati.RecuperaTemplateRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>StampaBollettinoResponse"
+        type="java:com.seda.payer.ottico.webservice.dati.StampaBollettinoResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>VerificaConfigurazioneOtticoRequest"
+        type="java:com.seda.payer.ottico.webservice.dati.VerificaConfigurazioneOtticoRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>GetListaImmaginiRequest"
+        type="java:com.seda.payer.ottico.webservice.dati.GetListaImmaginiRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>StampaImmagineContenziosoResponse"
+        type="java:com.seda.payer.ottico.webservice.dati.StampaImmagineContenziosoResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>StampaDocumentoResponse"
+        type="java:com.seda.payer.ottico.webservice.dati.StampaDocumentoResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+  <!-- END OTTICO WS -->
+  
+  <!-- START CONFIGURAZIONE WS -->
+
+  <service name="configurazione" provider="java:RPC" style="document" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://source.configurazione.webservice.ottico.payer.seda.com"/>
+      <parameter name="wsdlServiceElement" value="ConfigurazioneService"/>
+      <parameter name="schemaQualified" value="http://dati.configurazione.webservice.ottico.payer.seda.com,http://srv.configurazione.webservice.ottico.payer.seda.com"/>
+      <parameter name="schemaUnqualified" value="http://source.configurazione.webservice.ottico.payer.seda.com"/>
+      <parameter name="wsdlServicePort" value="ConfigurazionePort"/>
+      <parameter name="className" value="com.seda.payer.ottico.webservice.configurazione.source.Configurazione"/>
+      <parameter name="wsdlPortType" value="ConfigurazioneInterface"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="creaAssociaTemplate" qname="creaAssociaTemplate" returnQName="retNS:CreaAssociaTemplateResponse" xmlns:retNS="http://dati.configurazione.webservice.ottico.payer.seda.com" returnType="rtns:>CreaAssociaTemplateResponse" xmlns:rtns="http://dati.configurazione.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:CreaAssociaTemplateRequest" xmlns:pns="http://dati.configurazione.webservice.ottico.payer.seda.com" type="tns:>CreaAssociaTemplateRequest" xmlns:tns="http://dati.configurazione.webservice.ottico.payer.seda.com"/>
+        <fault name="ConfigurazioneFaultException" qname="fns:Fault" xmlns:fns="http://srv.configurazione.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.configurazione.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.configurazione.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <operation name="creaParametriOttico" qname="creaParametriOttico" returnQName="retNS:CreaParametriOtticoResponse" xmlns:retNS="http://dati.configurazione.webservice.ottico.payer.seda.com" returnType="rtns:>CreaParametriOtticoResponse" xmlns:rtns="http://dati.configurazione.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:CreaParametriOtticoRequest" xmlns:pns="http://dati.configurazione.webservice.ottico.payer.seda.com" type="tns:>CreaParametriOtticoRequest" xmlns:tns="http://dati.configurazione.webservice.ottico.payer.seda.com"/>
+        <fault name="ConfigurazioneFaultException" qname="fns:Fault" xmlns:fns="http://srv.configurazione.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.configurazione.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.configurazione.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <operation name="eliminaAssociaTemplate" qname="eliminaAssociaTemplate" returnQName="retNS:EliminaAssociaTemplateResponse" xmlns:retNS="http://dati.configurazione.webservice.ottico.payer.seda.com" returnType="rtns:>EliminaAssociaTemplateResponse" xmlns:rtns="http://dati.configurazione.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:EliminaAssociaTemplateRequest" xmlns:pns="http://dati.configurazione.webservice.ottico.payer.seda.com" type="tns:>EliminaAssociaTemplateRequest" xmlns:tns="http://dati.configurazione.webservice.ottico.payer.seda.com"/>
+        <fault name="ConfigurazioneFaultException" qname="fns:Fault" xmlns:fns="http://srv.configurazione.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.configurazione.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.configurazione.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <operation name="eliminaParametriOttico" qname="eliminaParametriOttico" returnQName="retNS:EliminaParametriOtticoResponse" xmlns:retNS="http://dati.configurazione.webservice.ottico.payer.seda.com" returnType="rtns:>EliminaParametriOtticoResponse" xmlns:rtns="http://dati.configurazione.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:EliminaParametriOtticoRequest" xmlns:pns="http://dati.configurazione.webservice.ottico.payer.seda.com" type="tns:>EliminaParametriOtticoRequest" xmlns:tns="http://dati.configurazione.webservice.ottico.payer.seda.com"/>
+        <fault name="ConfigurazioneFaultException" qname="fns:Fault" xmlns:fns="http://srv.configurazione.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.configurazione.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.configurazione.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <operation name="listaAssociaTemplate" qname="listaAssociaTemplate" returnQName="retNS:ListaAssociaTemplateResponse" xmlns:retNS="http://dati.configurazione.webservice.ottico.payer.seda.com" returnType="rtns:>ListaAssociaTemplateResponse" xmlns:rtns="http://dati.configurazione.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:ListaAssociaTemplateRequest" xmlns:pns="http://dati.configurazione.webservice.ottico.payer.seda.com" type="tns:>ListaAssociaTemplateRequest" xmlns:tns="http://dati.configurazione.webservice.ottico.payer.seda.com"/>
+        <fault name="ConfigurazioneFaultException" qname="fns:Fault" xmlns:fns="http://srv.configurazione.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.configurazione.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.configurazione.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <operation name="listaParametriOttico" qname="listaParametriOttico" returnQName="retNS:ListaParametriOtticoResponse" xmlns:retNS="http://dati.configurazione.webservice.ottico.payer.seda.com" returnType="rtns:>ListaParametriOtticoResponse" xmlns:rtns="http://dati.configurazione.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:ListaParametriOtticoRequest" xmlns:pns="http://dati.configurazione.webservice.ottico.payer.seda.com" type="tns:>ListaParametriOtticoRequest" xmlns:tns="http://dati.configurazione.webservice.ottico.payer.seda.com"/>
+        <fault name="ConfigurazioneFaultException" qname="fns:Fault" xmlns:fns="http://srv.configurazione.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.configurazione.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.configurazione.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <operation name="modificaAssociaTemplate" qname="modificaAssociaTemplate" returnQName="retNS:ModificaAssociaTemplateResponse" xmlns:retNS="http://dati.configurazione.webservice.ottico.payer.seda.com" returnType="rtns:>ModificaAssociaTemplateResponse" xmlns:rtns="http://dati.configurazione.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:ModificaAssociaTemplateRequest" xmlns:pns="http://dati.configurazione.webservice.ottico.payer.seda.com" type="tns:>ModificaAssociaTemplateRequest" xmlns:tns="http://dati.configurazione.webservice.ottico.payer.seda.com"/>
+        <fault name="ConfigurazioneFaultException" qname="fns:Fault" xmlns:fns="http://srv.configurazione.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.configurazione.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.configurazione.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <operation name="modificaParametriOttico" qname="modificaParametriOttico" returnQName="retNS:ModificaParametriOtticoResponse" xmlns:retNS="http://dati.configurazione.webservice.ottico.payer.seda.com" returnType="rtns:>ModificaParametriOtticoResponse" xmlns:rtns="http://dati.configurazione.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:ModificaParametriOtticoRequest" xmlns:pns="http://dati.configurazione.webservice.ottico.payer.seda.com" type="tns:>ModificaParametriOtticoRequest" xmlns:tns="http://dati.configurazione.webservice.ottico.payer.seda.com"/>
+        <fault name="ConfigurazioneFaultException" qname="fns:Fault" xmlns:fns="http://srv.configurazione.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.configurazione.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.configurazione.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <operation name="dettaglioParametriOttico" qname="dettaglioParametriOttico" returnQName="retNS:DettaglioParametriOtticoResponse" xmlns:retNS="http://dati.configurazione.webservice.ottico.payer.seda.com" returnType="rtns:>DettaglioParametriOtticoResponse" xmlns:rtns="http://dati.configurazione.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:DettaglioParametriOtticoRequest" xmlns:pns="http://dati.configurazione.webservice.ottico.payer.seda.com" type="tns:>DettaglioParametriOtticoRequest" xmlns:tns="http://dati.configurazione.webservice.ottico.payer.seda.com"/>
+        <fault name="ConfigurazioneFaultException" qname="fns:Fault" xmlns:fns="http://srv.configurazione.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.configurazione.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.configurazione.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <operation name="dettaglioAssociaTemplate" qname="dettaglioAssociaTemplate" returnQName="retNS:DettaglioAssociaTemplateResponse" xmlns:retNS="http://dati.configurazione.webservice.ottico.payer.seda.com" returnType="rtns:>DettaglioAssociaTemplateResponse" xmlns:rtns="http://dati.configurazione.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:DettaglioAssociaTemplateRequest" xmlns:pns="http://dati.configurazione.webservice.ottico.payer.seda.com" type="tns:>DettaglioAssociaTemplateRequest" xmlns:tns="http://dati.configurazione.webservice.ottico.payer.seda.com"/>
+        <fault name="ConfigurazioneFaultException" qname="fns:Fault" xmlns:fns="http://srv.configurazione.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.configurazione.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.configurazione.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <operation name="verificaAssociaTemplate" qname="verificaAssociaTemplate" returnQName="retNS:VerificaAssociaTemplateResponse" xmlns:retNS="http://dati.configurazione.webservice.ottico.payer.seda.com" returnType="rtns:>VerificaAssociaTemplateResponse" xmlns:rtns="http://dati.configurazione.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:VerificaAssociaTemplateRequest" xmlns:pns="http://dati.configurazione.webservice.ottico.payer.seda.com" type="tns:>VerificaAssociaTemplateRequest" xmlns:tns="http://dati.configurazione.webservice.ottico.payer.seda.com"/>
+        <fault name="ConfigurazioneFaultException" qname="fns:Fault" xmlns:fns="http://srv.configurazione.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.configurazione.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.configurazione.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="creaAssociaTemplate dettaglioParametriOttico listaParametriOttico verificaAssociaTemplate eliminaParametriOttico dettaglioAssociaTemplate eliminaAssociaTemplate modificaParametriOttico modificaAssociaTemplate listaAssociaTemplate creaParametriOttico"/>
+
+      <typeMapping
+        xmlns:ns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:>CreaAssociaTemplateResponse"
+        type="java:com.seda.payer.ottico.webservice.configurazione.dati.CreaAssociaTemplateResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:>DettaglioParametriOtticoRequest"
+        type="java:com.seda.payer.ottico.webservice.configurazione.dati.DettaglioParametriOtticoRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:>DettaglioAssociaTemplateResponse"
+        type="java:com.seda.payer.ottico.webservice.configurazione.dati.DettaglioAssociaTemplateResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:>ModificaAssociaTemplateRequest"
+        type="java:com.seda.payer.ottico.webservice.configurazione.dati.ModificaAssociaTemplateRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:>VerificaAssociaTemplateRequest"
+        type="java:com.seda.payer.ottico.webservice.configurazione.dati.VerificaAssociaTemplateRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:>CreaAssociaTemplateRequest"
+        type="java:com.seda.payer.ottico.webservice.configurazione.dati.CreaAssociaTemplateRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:>CreaParametriOtticoResponse"
+        type="java:com.seda.payer.ottico.webservice.configurazione.dati.CreaParametriOtticoResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:>ListaParametriOtticoRequest"
+        type="java:com.seda.payer.ottico.webservice.configurazione.dati.ListaParametriOtticoRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:>DettaglioParametriOtticoResponse"
+        type="java:com.seda.payer.ottico.webservice.configurazione.dati.DettaglioParametriOtticoResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:>VerificaAssociaTemplateResponse"
+        type="java:com.seda.payer.ottico.webservice.configurazione.dati.VerificaAssociaTemplateResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:>EliminaParametriOtticoRequest"
+        type="java:com.seda.payer.ottico.webservice.configurazione.dati.EliminaParametriOtticoRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:>ResponseType>retMessage"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:ListResponseType"
+        type="java:com.seda.payer.ottico.webservice.configurazione.dati.ListResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:>EliminaParametriOtticoResponse"
+        type="java:com.seda.payer.ottico.webservice.configurazione.dati.EliminaParametriOtticoResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://srv.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:FaultType"
+        type="java:com.seda.payer.ottico.webservice.configurazione.srv.FaultType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:>ListaAssociaTemplateRequest"
+        type="java:com.seda.payer.ottico.webservice.configurazione.dati.ListaAssociaTemplateRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:>CreaParametriOtticoRequest"
+        type="java:com.seda.payer.ottico.webservice.configurazione.dati.CreaParametriOtticoRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:>ListaParametriOtticoResponse"
+        type="java:com.seda.payer.ottico.webservice.configurazione.dati.ListaParametriOtticoResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:>DettaglioAssociaTemplateRequest"
+        type="java:com.seda.payer.ottico.webservice.configurazione.dati.DettaglioAssociaTemplateRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:>ModificaParametriOtticoRequest"
+        type="java:com.seda.payer.ottico.webservice.configurazione.dati.ModificaParametriOtticoRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:>EliminaAssociaTemplateResponse"
+        type="java:com.seda.payer.ottico.webservice.configurazione.dati.EliminaAssociaTemplateResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:>ListResponseType>pageInfo"
+        type="java:com.seda.payer.ottico.webservice.configurazione.dati.ListResponseTypePageInfo"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:ResponseType"
+        type="java:com.seda.payer.ottico.webservice.configurazione.dati.ResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:>ResponseType>retCode"
+        type="java:com.seda.payer.ottico.webservice.configurazione.dati.ResponseTypeRetCode"
+        serializer="org.apache.axis.encoding.ser.EnumSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.EnumDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:>ListaAssociaTemplateResponse"
+        type="java:com.seda.payer.ottico.webservice.configurazione.dati.ListaAssociaTemplateResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:>EliminaAssociaTemplateRequest"
+        type="java:com.seda.payer.ottico.webservice.configurazione.dati.EliminaAssociaTemplateRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:>ModificaAssociaTemplateResponse"
+        type="java:com.seda.payer.ottico.webservice.configurazione.dati.ModificaAssociaTemplateResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.configurazione.webservice.ottico.payer.seda.com"
+        qname="ns:>ModificaParametriOtticoResponse"
+        type="java:com.seda.payer.ottico.webservice.configurazione.dati.ModificaParametriOtticoResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+  <!-- END CONFIGURAZIONE WS -->
+  
+	<!-- START MANAGER -->
+  <service name="manager" provider="java:RPC" style="document" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://source.manager.webservice.ottico.payer.seda.com"/>
+      <parameter name="wsdlServiceElement" value="ManagerService"/>
+      <parameter name="schemaQualified" value="http://srv.manager.webservice.ottico.payer.seda.com,http://dati.manager.webservice.ottico.payer.seda.com"/>
+      <parameter name="schemaUnqualified" value="http://source.manager.webservice.ottico.payer.seda.com"/>
+      <parameter name="wsdlServicePort" value="ManagerPort"/>
+      <parameter name="className" value="com.seda.payer.ottico.webservice.manager.source.Manager"/>
+      <parameter name="wsdlPortType" value="ManagerInterface"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="ricercaListaElabOttico" qname="ricercaListaElabOttico" returnQName="retNS:RicercaListaElabOtticoResponse" xmlns:retNS="http://dati.manager.webservice.ottico.payer.seda.com" returnType="rtns:>RicercaListaElabOtticoResponse" xmlns:rtns="http://dati.manager.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:RicercaListaElabOtticoRequest" xmlns:pns="http://dati.manager.webservice.ottico.payer.seda.com" type="tns:>RicercaListaElabOtticoRequest" xmlns:tns="http://dati.manager.webservice.ottico.payer.seda.com"/>
+        <fault name="ManagerFaultException" qname="fns:Fault" xmlns:fns="http://srv.manager.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.manager.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.manager.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="ricercaListaElabOttico"/>
+
+      <typeMapping
+        xmlns:ns="http://dati.manager.webservice.ottico.payer.seda.com"
+        qname="ns:>ResponseType>retCode"
+        type="java:com.seda.payer.ottico.webservice.manager.dati.ResponseTypeRetCode"
+        serializer="org.apache.axis.encoding.ser.EnumSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.EnumDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.manager.webservice.ottico.payer.seda.com"
+        qname="ns:ListResponseType"
+        type="java:com.seda.payer.ottico.webservice.manager.dati.ListResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.manager.webservice.ottico.payer.seda.com"
+        qname="ns:>RicercaListaElabOtticoRequest"
+        type="java:com.seda.payer.ottico.webservice.manager.dati.RicercaListaElabOtticoRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.manager.webservice.ottico.payer.seda.com"
+        qname="ns:>ResponseType>retMessage"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://srv.manager.webservice.ottico.payer.seda.com"
+        qname="ns:FaultType"
+        type="java:com.seda.payer.ottico.webservice.manager.srv.FaultType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.manager.webservice.ottico.payer.seda.com"
+        qname="ns:>ListResponseType>pageInfo"
+        type="java:com.seda.payer.ottico.webservice.manager.dati.ListResponseTypePageInfo"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.manager.webservice.ottico.payer.seda.com"
+        qname="ns:ResponseType"
+        type="java:com.seda.payer.ottico.webservice.manager.dati.ResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://dati.manager.webservice.ottico.payer.seda.com"
+        qname="ns:>RicercaListaElabOtticoResponse"
+        type="java:com.seda.payer.ottico.webservice.manager.dati.RicercaListaElabOtticoResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+	<!-- END  MANAGER-->
+
+<!-- END DEPLOY -->
+
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>

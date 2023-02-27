@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tributi>
+	<tributo>
+		<codiceTributo></codiceTributo>
+		<annoTributo></annoTributo>
+		<progressivoTributo></progressivoTributo>
+		<tipoTributo></tipoTributo>
+		<importoTributo></importoTributo>
+		<impPagatoConSgravi></impPagatoConSgravi>
+		<noteTributo></noteTributo>
+		</tributo>
+</tributi>
+	

@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	targetNamespace="http://source.configurazione.webservice.ottico.payer.seda.com"
+	xmlns:tns="http://source.configurazione.webservice.ottico.payer.seda.com" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:sd="http://dati.configurazione.webservice.ottico.payer.seda.com"
+	xmlns:srv="http://srv.configurazione.webservice.ottico.payer.seda.com" name="PayerConfigurazioneOttico" >
+
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://source.configurazione.webservice.ottico.payer.seda.com">
+			<xsd:import namespace="http://dati.configurazione.webservice.ottico.payer.seda.com"
+				schemaLocation="xsd/configurazione/Configurazione.xsd" />
+			<xsd:import namespace="http://srv.configurazione.webservice.ottico.payer.seda.com"
+				schemaLocation="xsd/configurazione/Srv.xsd" />
+		</xsd:schema>
+	</wsdl:types>	
+	<!-- Start_Message -->
+		<!-- 1 CreaAssociaTemplate -->
+	<wsdl:message name="CreaAssociaTemplateRequest">
+		<wsdl:part name="in" element="sd:CreaAssociaTemplateRequest" />
+	</wsdl:message>
+	<wsdl:message name="CreaAssociaTemplateResponse">
+		<wsdl:part name="out" element="sd:CreaAssociaTemplateResponse" />
+	</wsdl:message>
+	
+	<!-- 2. CreaParametriOttico -->
+	<wsdl:message name="CreaParametriOtticoRequest">
+		<wsdl:part name="in" element="sd:CreaParametriOtticoRequest" />
+	</wsdl:message>
+	<wsdl:message name="CreaParametriOtticoResponse">
+		<wsdl:part name="out" element="sd:CreaParametriOtticoResponse" />
+	</wsdl:message>
+	
+	<!-- 3. EliminaAssociaTemplate -->
+	<wsdl:message name="EliminaAssociaTemplateRequest">
+		<wsdl:part name="in" element="sd:EliminaAssociaTemplateRequest" />
+	</wsdl:message>
+	<wsdl:message name="EliminaAssociaTemplateResponse">
+		<wsdl:part name="out" element="sd:EliminaAssociaTemplateResponse" />
+	</wsdl:message>
+	
+	<!-- 4. EliminaParametriOttico -->
+	<wsdl:message name="EliminaParametriOtticoRequest">
+		<wsdl:part name="in" element="sd:EliminaParametriOtticoRequest" />
+	</wsdl:message>
+	<wsdl:message name="EliminaParametriOtticoResponse">
+		<wsdl:part name="out" element="sd:EliminaParametriOtticoResponse" />
+	</wsdl:message>
+	
+	<!-- 5. ListaAssociaTemplate -->
+	<wsdl:message name="ListaAssociaTemplateRequest">
+		<wsdl:part name="in" element="sd:ListaAssociaTemplateRequest" />
+	</wsdl:message>
+	<wsdl:message name="ListaAssociaTemplateResponse">
+		<wsdl:part name="out" element="sd:ListaAssociaTemplateResponse" />
+	</wsdl:message>
+	
+	<!-- 6. ListaParametriOttico -->
+	<wsdl:message name="ListaParametriOtticoRequest">
+		<wsdl:part name="in" element="sd:ListaParametriOtticoRequest" />
+	</wsdl:message>
+	<wsdl:message name="ListaParametriOtticoResponse">
+		<wsdl:part name="out" element="sd:ListaParametriOtticoResponse" />
+	</wsdl:message>
+	
+	<!-- 7. ModificaAssociaTemplate -->
+	<wsdl:message name="ModificaAssociaTemplateRequest">
+		<wsdl:part name="in" element="sd:ModificaAssociaTemplateRequest" />
+	</wsdl:message>
+	<wsdl:message name="ModificaAssociaTemplateResponse">
+		<wsdl:part name="out" element="sd:ModificaAssociaTemplateResponse" />
+	</wsdl:message>
+	
+	<!-- 8. ModificaParametriOttico -->
+	<wsdl:message name="ModificaParametriOtticoRequest">
+		<wsdl:part name="in" element="sd:ModificaParametriOtticoRequest" />
+	</wsdl:message>
+	<wsdl:message name="ModificaParametriOtticoResponse">
+		<wsdl:part name="out" element="sd:ModificaParametriOtticoResponse" />
+	</wsdl:message>
+	
+	<wsdl:message name="DettaglioParametriOtticoRequest">
+		<wsdl:part name="in" element="sd:DettaglioParametriOtticoRequest" />
+	</wsdl:message>
+	<wsdl:message name="DettaglioParametriOtticoResponse">
+		<wsdl:part name="out" element="sd:DettaglioParametriOtticoResponse" />
+	</wsdl:message>
+	
+	<wsdl:message name="DettaglioAssociaTemplateRequest">
+		<wsdl:part name="in" element="sd:DettaglioAssociaTemplateRequest" />
+	</wsdl:message>
+	<wsdl:message name="DettaglioAssociaTemplateResponse">
+		<wsdl:part name="out" element="sd:DettaglioAssociaTemplateResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="VerificaAssociaTemplateRequest">
+		<wsdl:part name="in" element="sd:VerificaAssociaTemplateRequest" />
+	</wsdl:message>
+	<wsdl:message name="VerificaAssociaTemplateResponse">
+		<wsdl:part name="out" element="sd:VerificaAssociaTemplateResponse"/>
+	</wsdl:message>
+
+	<!-- End_Message -->
+	<wsdl:message name="Fault">
+		<wsdl:part name="fault" element="srv:Fault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="Empty" />
+
+	<wsdl:portType name="ConfigurazioneInterface">
+		<!-- 1. -->
+		<wsdl:operation name="creaAssociaTemplate">
+			<wsdl:input message="tns:CreaAssociaTemplateRequest"/>
+			<wsdl:output message="tns:CreaAssociaTemplateResponse" />
+			<wsdl:fault name="ConfigurazioneFaultException" message="tns:Fault"></wsdl:fault>
+		</wsdl:operation>
+		<!-- 2. -->
+		<wsdl:operation name="creaParametriOttico">
+			<wsdl:input message="tns:CreaParametriOtticoRequest"/>
+			<wsdl:output message="tns:CreaParametriOtticoResponse" />
+			<wsdl:fault name="ConfigurazioneFaultException" message="tns:Fault"></wsdl:fault>
+		</wsdl:operation>
+		<!-- 3. -->
+		<wsdl:operation name="eliminaAssociaTemplate">
+			<wsdl:input message="tns:EliminaAssociaTemplateRequest"/>
+			<wsdl:output message="tns:EliminaAssociaTemplateResponse" />
+			<wsdl:fault name="ConfigurazioneFaultException" message="tns:Fault"></wsdl:fault>
+		</wsdl:operation>
+		<!-- 4. -->
+		<wsdl:operation name="eliminaParametriOttico">
+			<wsdl:input message="tns:EliminaParametriOtticoRequest"/>
+			<wsdl:output message="tns:EliminaParametriOtticoResponse" />
+			<wsdl:fault name="ConfigurazioneFaultException" message="tns:Fault"></wsdl:fault>
+		</wsdl:operation>
+		<!-- 5. -->
+		<wsdl:operation name="listaAssociaTemplate">
+			<wsdl:input message="tns:ListaAssociaTemplateRequest"/>
+			<wsdl:output message="tns:ListaAssociaTemplateResponse" />
+			<wsdl:fault name="ConfigurazioneFaultException" message="tns:Fault"></wsdl:fault>
+		</wsdl:operation>
+		<!-- 6. -->
+		<wsdl:operation name="listaParametriOttico">
+			<wsdl:input message="tns:ListaParametriOtticoRequest"/>
+			<wsdl:output message="tns:ListaParametriOtticoResponse" />
+			<wsdl:fault name="ConfigurazioneFaultException" message="tns:Fault"></wsdl:fault>
+		</wsdl:operation>
+		<!-- 7. -->
+		<wsdl:operation name="modificaAssociaTemplate">
+			<wsdl:input message="tns:ModificaAssociaTemplateRequest"/>
+			<wsdl:output message="tns:ModificaAssociaTemplateResponse" />
+			<wsdl:fault name="ConfigurazioneFaultException" message="tns:Fault"></wsdl:fault>
+		</wsdl:operation>
+		<!-- 8. -->
+		<wsdl:operation name="modificaParametriOttico">
+			<wsdl:input message="tns:ModificaParametriOtticoRequest"/>
+			<wsdl:output message="tns:ModificaParametriOtticoResponse" />
+			<wsdl:fault name="ConfigurazioneFaultException" message="tns:Fault"></wsdl:fault>
+		</wsdl:operation>
+		<!-- 9. -->
+		<wsdl:operation name="dettaglioParametriOttico">
+			<wsdl:input message="tns:DettaglioParametriOtticoRequest"/>
+			<wsdl:output message="tns:DettaglioParametriOtticoResponse" />
+			<wsdl:fault name="ConfigurazioneFaultException" message="tns:Fault"></wsdl:fault>
+		</wsdl:operation>
+		<!-- 10. -->
+		<wsdl:operation name="dettaglioAssociaTemplate">
+			<wsdl:input message="tns:DettaglioAssociaTemplateRequest"/>
+			<wsdl:output message="tns:DettaglioAssociaTemplateResponse" />
+			<wsdl:fault name="ConfigurazioneFaultException" message="tns:Fault"></wsdl:fault>
+		</wsdl:operation>
+		<!-- 11. -->
+		<wsdl:operation name="verificaAssociaTemplate">
+			<wsdl:input message="tns:VerificaAssociaTemplateRequest"/>
+			<wsdl:output message="tns:VerificaAssociaTemplateResponse" />
+			<wsdl:fault name="ConfigurazioneFaultException" message="tns:Fault"></wsdl:fault>
+		</wsdl:operation>
+
+	</wsdl:portType>
+
+	<wsdl:binding name="ConfigurazioneSOAPBinding" type="tns:ConfigurazioneInterface">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<!-- 1. -->
+		<wsdl:operation name="creaAssociaTemplate">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ConfigurazioneFaultException">
+				<soap:fault name="ConfigurazioneFaultException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		
+		<!-- 2. -->
+		<wsdl:operation name="creaParametriOttico">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ConfigurazioneFaultException">
+				<soap:fault name="ConfigurazioneFaultException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		
+		<!-- 3. -->
+		<wsdl:operation name="eliminaAssociaTemplate">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ConfigurazioneFaultException">
+				<soap:fault name="ConfigurazioneFaultException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		
+		<!-- 4. -->
+		<wsdl:operation name="eliminaParametriOttico">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ConfigurazioneFaultException">
+				<soap:fault name="ConfigurazioneFaultException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		
+		<!-- 5. -->
+		<wsdl:operation name="listaAssociaTemplate">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ConfigurazioneFaultException">
+				<soap:fault name="ConfigurazioneFaultException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		
+		<!-- 6. -->
+		<wsdl:operation name="listaParametriOttico">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ConfigurazioneFaultException">
+				<soap:fault name="ConfigurazioneFaultException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		
+		<!-- 7. -->
+		<wsdl:operation name="modificaAssociaTemplate">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ConfigurazioneFaultException">
+				<soap:fault name="ConfigurazioneFaultException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		
+		<!-- 8. -->
+		<wsdl:operation name="modificaParametriOttico">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ConfigurazioneFaultException">
+				<soap:fault name="ConfigurazioneFaultException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		
+		<!-- 9. -->
+		<wsdl:operation name="dettaglioParametriOttico">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ConfigurazioneFaultException">
+				<soap:fault name="ConfigurazioneFaultException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		
+		<!-- 10. -->
+		<wsdl:operation name="dettaglioAssociaTemplate">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ConfigurazioneFaultException">
+				<soap:fault name="ConfigurazioneFaultException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		
+		<!-- 11. -->
+		<wsdl:operation name="verificaAssociaTemplate">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ConfigurazioneFaultException">
+				<soap:fault name="ConfigurazioneFaultException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="ConfigurazioneService">
+		<wsdl:port binding="tns:ConfigurazioneSOAPBinding" name="ConfigurazionePort">
+			<soap:address location="http://localhost:8080/ConfigurazioneService/configurazione" />
+		</wsdl:port>
+	</wsdl:service>
+
+</wsdl:definitions>

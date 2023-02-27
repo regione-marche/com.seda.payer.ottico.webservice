@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://dati.webservice.ottico.payer.seda.com"
+			xmlns:tns="http://dati.webservice.ottico.payer.seda.com"
+			elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+<!-- 1. -->
+	<xsd:element name="ElaboraFlussiImgRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="dummy" type="xsd:string" nillable="true" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ElaboraFlussiImgResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="response" type="tns:ResponseType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+<!-- 2. -->
+	<xsd:element name="LogElaborazioneFlussiImgRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="testoFileLog" type="xsd:string" nillable="true" />
+				<xsd:element name="directoryLog" type="xsd:string" nillable="true" />
+				<xsd:element name="nomeFileLog" type="xsd:string" nillable="true" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="LogElaborazioneFlussiImgResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="response" type="tns:ResponseType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+<!-- 3. -->
+	<xsd:element name="RecuperaTemplateRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="tipoDocumento" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceSocieta" type="xsd:string" nillable="true" />
+				<xsd:element name="tipologiaServizio" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceUtente" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceEnte" type="xsd:string" nillable="true" />
+				<xsd:element name="tipoBollettino" type="xsd:string" nillable="true" />
+				<xsd:element name="dataValidita" type="xsd:dateTime" nillable="true" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="RecuperaTemplateResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="riferimentoTemplate" type="xsd:string" nillable="true" />
+				<xsd:element name="response" type="tns:ResponseType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+<!-- 4. -->
+	<xsd:element name="StampaBollettinoRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="codiceSocieta" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceUtente" type="xsd:string" nillable="true" />
+				<xsd:element name="chiaveEnte" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceEnte" type="xsd:string" nillable="true" />
+				<xsd:element name="numeroDocumento" type="xsd:string" nillable="true" />
+				<xsd:element name="listaMovimentiXml" type="xsd:string" nillable="true" />
+				<xsd:element name="flagWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="indirizzoWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="userWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="passwordWebServiceOttico" type="xsd:string" nillable="true" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="StampaBollettinoResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+			<xsd:element name="fileNameZip" type="xsd:string" nillable="true" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="response" type="tns:ResponseType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+<!-- 5. -->
+	<xsd:element name="StampaDocumentoRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="codiceSocieta" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceUtente" type="xsd:string" nillable="true" />
+				<xsd:element name="chiaveEnte" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceEnte" type="xsd:string" nillable="true" />
+				<xsd:element name="dettaglioDocumentoXml" type="xsd:string" nillable="true" />
+				<xsd:element name="listaScadenzeXml" type="xsd:string" nillable="true" />
+				<xsd:element name="listaTributiXml" type="xsd:string" nillable="true" />
+				<xsd:element name="listaMovimentiXml" type="xsd:string" nillable="true" />
+
+				<xsd:element name="numeroDocumento" type="xsd:string" nillable="true" />
+				<xsd:element name="flagDocumento" type="xsd:string" nillable="true" />
+				
+				<xsd:element name="flagWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="indirizzoWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="userWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="passwordWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceFiscale" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceImpostaServizio" type="xsd:string" nillable="true" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="StampaDocumentoResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="fileName" type="xsd:string" nillable="true" />
+				<xsd:element name="response" type="tns:ResponseType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+<!-- 6. -->
+	<xsd:element name="StampaQuietanzaRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="codiceSocieta" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceUtente" type="xsd:string" nillable="true" />
+				<xsd:element name="chiaveEnte" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceEnte" type="xsd:string" nillable="true" />
+				<xsd:element name="numeroDocumento" type="xsd:string" nillable="true" />
+				<xsd:element name="listaMovimentiXml" type="xsd:string" nillable="true" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="StampaQuietanzaResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="fileNameZip" type="xsd:string" nillable="true" minOccurs="0" maxOccurs="1" />
+				<xsd:element name="response" type="tns:ResponseType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+<!-- 7. -->
+	<xsd:element name="StampaRelataRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="numeroDocumento" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceSocieta" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceUtente" type="xsd:string" nillable="true" />
+				<xsd:element name="chiaveEnte" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceEnte" type="xsd:string" nillable="true" />
+				<xsd:element name="flagWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="indirizzoWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="userWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="passwordWebServiceOttico" type="xsd:string" nillable="true" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="StampaRelataResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="fileNameZip" type="xsd:string" nillable="true" minOccurs="0" maxOccurs="1" />
+				<xsd:element name="response" type="tns:ResponseType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+
+<!-- 8. -->
+	<xsd:element name="VerificaConfigurazioneOtticoRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="chiaveSocieta" type="xsd:string" nillable="true" />
+				<xsd:element name="chiaveUtente" type="xsd:string" nillable="true" />
+				<xsd:element name="codiceEnte" type="xsd:string" nillable="true" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="VerificaConfigurazioneOtticoResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+			<xsd:element name="flagVisualizzaDocumento" type="xsd:string" nillable="true"/>
+			<xsd:element name="flagVisualizzaRelata" type="xsd:string" nillable="true"/>
+			<xsd:element name="flagVisualizzaBollettino" type="xsd:string" nillable="true"/>
+			<xsd:element name="flagVisualizzaQuietanza" type="xsd:string" nillable="true"/>
+			<xsd:element name="flagWebServiceOttico" type="xsd:string" nillable="true"/>
+			<xsd:element name="indirizzoServerOttico" type="xsd:string" nillable="true"/>
+			<xsd:element name="userServerOttico" type="xsd:string" nillable="true"/>
+			<xsd:element name="passwordServerOttico" type="xsd:string" nillable="true"/>
+			<xsd:element name="response" type="tns:ResponseType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+<!-- 9. -->
+	<xsd:element name="VerificaFlussoRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="chiaveSocieta" type="xsd:string" nillable="true" />
+				<xsd:element name="chiaveUtente" type="xsd:string" nillable="true" />
+				<xsd:element name="chiaveEnte" type="xsd:string" nillable="true" />
+				<xsd:element name="nomeFileDati" type="xsd:string" nillable="true" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="VerificaFlussoResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+			<xsd:element name="presenzaFlusso" type="xsd:string" />
+			<xsd:element name="response" type="tns:ResponseType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+<!-- PG150290_002 - inizio -->
+	<!-- 10. getListaImmagini -->
+	<xsd:element name="GetListaImmaginiRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="numeroDocumento" type="xsd:string" nillable="true" />
+				<xsd:element name="flagAccesso" type="xsd:string" nillable="true" />
+				<xsd:element name="flagWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="indirizzoWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="userWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="passwordWebServiceOttico" type="xsd:string" nillable="true" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="GetListaImmaginiResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+			<xsd:element minOccurs="0" name="listXmlImmagini" maxOccurs="1" nillable="true" type="xsd:string"/>
+			<xsd:element name="response" type="tns:ResponseType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<!-- 11. stampaImmagineContenzioso -->
+	<xsd:element name="StampaImmagineContenziosoRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="idDocBarcode" type="xsd:string" nillable="true" />
+				<xsd:element name="flagAccesso" type="xsd:string" nillable="true" />
+				<xsd:element name="pdfExt" type="xsd:boolean" nillable="true"/>
+				<xsd:element name="flagDocumento" type="xsd:string" nillable="true" />
+				<xsd:element name="flagWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="indirizzoWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="userWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="passwordWebServiceOttico" type="xsd:string" nillable="true" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="StampaImmagineContenziosoResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="fileName" type="xsd:string" nillable="true" />
+				<xsd:element name="fileExtension" type="xsd:string" nillable="true" />
+				<xsd:element name="response" type="tns:ResponseType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<!-- 11. stampaImmagine -->
+	<xsd:element name="StampaImmagineRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="idDocumento" type="xsd:string" nillable="true" />
+				<xsd:element name="filePath" type="xsd:string" nillable="true" />
+				<xsd:element name="flagDocumento" type="xsd:string" nillable="true" />
+				<xsd:element name="flagWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="indirizzoWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="userWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="passwordWebServiceOttico" type="xsd:string" nillable="true" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="StampaImmagineResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="fileName" type="xsd:string" nillable="true" />
+				<xsd:element name="response" type="tns:ResponseType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+<!-- PG150290_002 - fine -->
+	
+<!-- MOD -->
+	<xsd:complexType name="ResponseType">
+		<xsd:sequence>
+			<xsd:element name="retCode">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+      					<xsd:length value="2"></xsd:length>
+      					<xsd:enumeration value="00">
+      						<xsd:annotation><!-- Request execute successfully --></xsd:annotation>
+      					</xsd:enumeration>
+      					<xsd:enumeration value="01">
+      						<xsd:annotation><!-- Generic error --></xsd:annotation>
+      					</xsd:enumeration>
+      					<xsd:enumeration value="02" />
+      					<xsd:enumeration value="03" />
+      				</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="retMessage">
+				<xsd:annotation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:minLength value="0"></xsd:minLength>
+						<xsd:maxLength value="1024"></xsd:maxLength>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

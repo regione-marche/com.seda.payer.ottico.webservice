@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	targetNamespace="http://source.webservice.ottico.payer.seda.com"
+	xmlns:tns="http://source.webservice.ottico.payer.seda.com" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:sd="http://dati.webservice.ottico.payer.seda.com"
+	xmlns:srv="http://srv.webservice.ottico.payer.seda.com" name="PayerOttico" >
+
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://source.webservice.ottico.payer.seda.com">
+			<xsd:import namespace="http://dati.webservice.ottico.payer.seda.com"
+				schemaLocation="xsd/Ottico.xsd" />
+			<xsd:import namespace="http://srv.webservice.ottico.payer.seda.com"
+				schemaLocation="xsd/Srv.xsd" />
+		</xsd:schema>
+	</wsdl:types>	
+	<!-- Start_Message -->
+		<!-- 1 ElabFlussiImg -->
+	<wsdl:message name="ElaboraFlussiImgRequest">
+		<wsdl:part name="in" element="sd:ElaboraFlussiImgRequest" />
+	</wsdl:message>
+	<wsdl:message name="ElaboraFlussiImgResponse">
+		<wsdl:part name="out" element="sd:ElaboraFlussiImgResponse" />
+	</wsdl:message>
+	
+	<!-- 2. logElabFlussoImg -->
+	<wsdl:message name="LogElaborazioneFlussiImgRequest">
+		<wsdl:part name="in" element="sd:LogElaborazioneFlussiImgRequest" />
+	</wsdl:message>
+	<wsdl:message name="LogElaborazioneFlussiImgResponse">
+		<wsdl:part name="out" element="sd:LogElaborazioneFlussiImgResponse" />
+	</wsdl:message>
+	
+	<!-- 3. recuperaTemplate -->
+	<wsdl:message name="RecuperaTemplateRequest">
+		<wsdl:part name="in" element="sd:RecuperaTemplateRequest" />
+	</wsdl:message>
+	<wsdl:message name="RecuperaTemplateResponse">
+		<wsdl:part name="out" element="sd:RecuperaTemplateResponse" />
+	</wsdl:message>
+	
+	<!-- 4. stampaBoll -->
+	<wsdl:message name="StampaBollettinoRequest">
+		<wsdl:part name="in" element="sd:StampaBollettinoRequest" />
+	</wsdl:message>
+	<wsdl:message name="StampaBollettinoResponse">
+		<wsdl:part name="out" element="sd:StampaBollettinoResponse" />
+	</wsdl:message>
+	
+	<!-- 5. stampaDoc -->
+	<wsdl:message name="StampaDocumentoRequest">
+		<wsdl:part name="in" element="sd:StampaDocumentoRequest" />
+	</wsdl:message>
+	<wsdl:message name="StampaDocumentoResponse">
+		<wsdl:part name="out" element="sd:StampaDocumentoResponse" />
+	</wsdl:message>
+	
+	<!-- 6. stampaQui -->
+	<wsdl:message name="StampaQuietanzaRequest">
+		<wsdl:part name="in" element="sd:StampaQuietanzaRequest" />
+	</wsdl:message>
+	<wsdl:message name="StampaQuietanzaResponse">
+		<wsdl:part name="out" element="sd:StampaQuietanzaResponse" />
+	</wsdl:message>
+	
+	<!-- 7. stampaRel -->
+	<wsdl:message name="StampaRelataRequest">
+		<wsdl:part name="in" element="sd:StampaRelataRequest" />
+	</wsdl:message>
+	<wsdl:message name="StampaRelataResponse">
+		<wsdl:part name="out" element="sd:StampaRelataResponse" />
+	</wsdl:message>
+	
+	<!-- 8. verConfOttico -->
+	<wsdl:message name="VerificaConfigurazioneOtticoRequest">
+		<wsdl:part name="in" element="sd:VerificaConfigurazioneOtticoRequest" />
+	</wsdl:message>
+	<wsdl:message name="VerificaConfigurazioneOtticoResponse">
+		<wsdl:part name="out" element="sd:VerificaConfigurazioneOtticoResponse" />
+	</wsdl:message>
+	
+	<!-- 9. verFlusso -->
+	<wsdl:message name="VerificaFlussoRequest">
+		<wsdl:part name="in" element="sd:VerificaFlussoRequest" />
+	</wsdl:message>
+	<wsdl:message name="VerificaFlussoResponse">
+		<wsdl:part name="out" element="sd:VerificaFlussoResponse" />
+	</wsdl:message>
+	
+	<!-- PG150290_002 - inizio -->
+	<!-- 10. getListaImmagini -->
+	<wsdl:message name="GetListaImmaginiRequest">
+		<wsdl:part name="in" element="sd:GetListaImmaginiRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetListaImmaginiResponse">
+		<wsdl:part name="out" element="sd:GetListaImmaginiResponse" />
+	</wsdl:message>
+	<!-- 11. stampaImmagineContenzioso -->
+	<wsdl:message name="StampaImmagineContenziosoRequest">
+		<wsdl:part name="in" element="sd:StampaImmagineContenziosoRequest" />
+	</wsdl:message>
+	<wsdl:message name="StampaImmagineContenziosoResponse">
+		<wsdl:part name="out" element="sd:StampaImmagineContenziosoResponse" />
+	</wsdl:message>
+	<!-- 12. stampaImmagine -->
+	<wsdl:message name="StampaImmagineRequest">
+		<wsdl:part name="in" element="sd:StampaImmagineRequest" />
+	</wsdl:message>
+	<wsdl:message name="StampaImmagineResponse">
+		<wsdl:part name="out" element="sd:StampaImmagineResponse" />
+	</wsdl:message>
+	<!-- PG150290_002 - end -->
+	
+	<!-- End_Message -->
+	<wsdl:message name="Fault">
+		<wsdl:part name="fault" element="srv:Fault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="Empty" />
+
+	<wsdl:portType name="OtticoInterface">
+		<!-- 1. -->
+		<wsdl:operation name="elaboraFlussiImg">
+			<wsdl:input message="tns:ElaboraFlussiImgRequest"/>
+			<wsdl:output message="tns:ElaboraFlussiImgResponse" />
+			<wsdl:fault name="OtticoFaultException" message="tns:Fault"></wsdl:fault>
+		</wsdl:operation>
+		<!-- 2. -->
+		<wsdl:operation name="logElaborazioneFlussiImg">
+			<wsdl:input message="tns:LogElaborazioneFlussiImgRequest"/>
+			<wsdl:output message="tns:LogElaborazioneFlussiImgResponse" />
+			<wsdl:fault name="OtticoFaultException" message="tns:Fault"></wsdl:fault>
+		</wsdl:operation>
+		<!-- 3. -->
+		<wsdl:operation name="recuperaTemplate">
+			<wsdl:input message="tns:RecuperaTemplateRequest"/>
+			<wsdl:output message="tns:RecuperaTemplateResponse" />
+			<wsdl:fault name="OtticoFaultException" message="tns:Fault"></wsdl:fault>
+		</wsdl:operation>
+		<!-- 4. -->
+		<wsdl:operation name="stampaBollettino">
+			<wsdl:input message="tns:StampaBollettinoRequest"/>
+			<wsdl:output message="tns:StampaBollettinoResponse" />
+			<wsdl:fault name="OtticoFaultException" message="tns:Fault"></wsdl:fault>
+		</wsdl:operation>
+		<!-- 5. -->
+		<wsdl:operation name="stampaDocumento">
+			<wsdl:input message="tns:StampaDocumentoRequest"/>
+			<wsdl:output message="tns:StampaDocumentoResponse" />
+			<wsdl:fault name="OtticoFaultException" message="tns:Fault"></wsdl:fault>
+		</wsdl:operation>
+		<!-- 6. -->
+		<wsdl:operation name="stampaQuietanza">
+			<wsdl:input message="tns:StampaQuietanzaRequest"/>
+			<wsdl:output message="tns:StampaQuietanzaResponse" />
+			<wsdl:fault name="OtticoFaultException" message="tns:Fault"></wsdl:fault>
+		</wsdl:operation>
+		<!-- 7. -->
+		<wsdl:operation name="stampaRelata">
+			<wsdl:input message="tns:StampaRelataRequest"/>
+			<wsdl:output message="tns:StampaRelataResponse" />
+			<wsdl:fault name="OtticoFaultException" message="tns:Fault"></wsdl:fault>
+		</wsdl:operation>
+		<!-- 8. -->
+		<wsdl:operation name="verificaConfigurazioneOttico">
+			<wsdl:input message="tns:VerificaConfigurazioneOtticoRequest"/>
+			<wsdl:output message="tns:VerificaConfigurazioneOtticoResponse" />
+			<wsdl:fault name="OtticoFaultException" message="tns:Fault"></wsdl:fault>
+		</wsdl:operation>
+		<!-- 9. -->
+		<wsdl:operation name="verificaFlusso">
+			<wsdl:input message="tns:VerificaFlussoRequest"/>
+			<wsdl:output message="tns:VerificaFlussoResponse" />
+			<wsdl:fault name="OtticoFaultException" message="tns:Fault"></wsdl:fault>
+		</wsdl:operation>
+		<!-- PG150290_002 - inizio -->
+		<!-- 10. getListaImmagini -->
+		<wsdl:operation name="getListaImmagini">
+			<wsdl:input message="tns:GetListaImmaginiRequest"/>
+			<wsdl:output message="tns:GetListaImmaginiResponse" />
+			<wsdl:fault name="OtticoFaultException" message="tns:Fault"></wsdl:fault>
+		</wsdl:operation>
+		<!-- 11. stampaImmagineContenzioso -->
+		<wsdl:operation name="stampaImmagineContenzioso">
+			<wsdl:input message="tns:StampaImmagineContenziosoRequest"/>
+			<wsdl:output message="tns:StampaImmagineContenziosoResponse" />
+			<wsdl:fault name="OtticoFaultException" message="tns:Fault"></wsdl:fault>
+		</wsdl:operation>
+		<!-- 12. stampaImmagine -->
+		<wsdl:operation name="stampaImmagine">
+			<wsdl:input message="tns:StampaImmagineRequest"/>
+			<wsdl:output message="tns:StampaImmagineResponse" />
+			<wsdl:fault name="OtticoFaultException" message="tns:Fault"></wsdl:fault>
+		</wsdl:operation>
+		<!-- PG150290_002 - fine -->
+	</wsdl:portType>
+
+	<wsdl:binding name="OtticoSOAPBinding" type="tns:OtticoInterface">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<!-- 1. -->
+		<wsdl:operation name="elaboraFlussiImg">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OtticoFaultException">
+				<soap:fault name="OtticoFaultException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		
+		<!-- 2. -->
+		<wsdl:operation name="logElaborazioneFlussiImg">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OtticoFaultException">
+				<soap:fault name="OtticoFaultException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		
+		<!-- 3. -->
+		<wsdl:operation name="recuperaTemplate">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OtticoFaultException">
+				<soap:fault name="OtticoFaultException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		
+		<!-- 4. -->
+		<wsdl:operation name="stampaBollettino">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OtticoFaultException">
+				<soap:fault name="OtticoFaultException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		
+		<!-- 5. -->
+		<wsdl:operation name="stampaDocumento">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OtticoFaultException">
+				<soap:fault name="OtticoFaultException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		
+		<!-- 6. -->
+		<wsdl:operation name="stampaQuietanza">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OtticoFaultException">
+				<soap:fault name="OtticoFaultException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		
+		<!-- 7. -->
+		<wsdl:operation name="stampaRelata">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OtticoFaultException">
+				<soap:fault name="OtticoFaultException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		
+		<!-- 8. -->
+		<wsdl:operation name="verificaConfigurazioneOttico">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OtticoFaultException">
+				<soap:fault name="OtticoFaultException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		
+		<!-- 9. -->
+		<wsdl:operation name="verificaFlusso">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OtticoFaultException">
+				<soap:fault name="OtticoFaultException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		
+		<!-- PG150290_002 - inizio -->
+		<!-- 10. getListaImmagini -->
+		<wsdl:operation name="getListaImmagini">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OtticoFaultException">
+				<soap:fault name="OtticoFaultException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<!-- 11. stampaImmagineContenzioso -->
+		<wsdl:operation name="stampaImmagineContenzioso">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OtticoFaultException">
+				<soap:fault name="OtticoFaultException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<!-- 12. stampaImmagine -->
+		<wsdl:operation name="stampaImmagine">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OtticoFaultException">
+				<soap:fault name="OtticoFaultException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<!-- PG150290_002 - fine -->
+	</wsdl:binding>
+
+	<wsdl:service name="OtticoService">
+		<wsdl:port binding="tns:OtticoSOAPBinding" name="OtticoPort">
+			<soap:address location="http://localhost:8080/OtticoService/ottico" />
+		</wsdl:port>
+	</wsdl:service>
+
+</wsdl:definitions>
