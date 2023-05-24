@@ -271,6 +271,33 @@
 		</xsd:complexType>
 	</xsd:element>
 	
+	<!-- PAGONET-567 SB - INIZIO -->
+	<xsd:element name="StampaImmagineEsitoRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="idDocBarcode" type="xsd:string" nillable="true" />
+				<xsd:element name="flagAccesso" type="xsd:string" nillable="true" />
+				<xsd:element name="pdfExt" type="xsd:boolean" nillable="true"/>
+				<xsd:element name="flagDocumento" type="xsd:string" nillable="true" />
+				<xsd:element name="flagWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="indirizzoWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="userWebServiceOttico" type="xsd:string" nillable="true" />
+				<xsd:element name="passwordWebServiceOttico" type="xsd:string" nillable="true" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="StampaImmagineEsitoResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="fileName" type="xsd:string" nillable="true" />
+				<xsd:element name="fileExtension" type="xsd:string" nillable="true" />
+				<xsd:element name="response" type="tns:ResponseType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<!-- PAGONET-567 SB - FINE -->
+	
 	<!-- 11. stampaImmagine -->
 	<xsd:element name="StampaImmagineRequest">
 		<xsd:complexType>

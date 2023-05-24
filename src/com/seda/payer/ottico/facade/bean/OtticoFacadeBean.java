@@ -63,6 +63,8 @@ import com.seda.payer.integraottico.webservice.dati.FileEstensione;
 import com.seda.payer.integraottico.webservice.dati.FiltriDiRicerca;
 import com.seda.payer.integraottico.webservice.dati.GetImmagineContenziosoRequest;
 import com.seda.payer.integraottico.webservice.dati.GetImmagineContenziosoResponse;
+import com.seda.payer.integraottico.webservice.dati.GetImmagineEsitoRequest;
+import com.seda.payer.integraottico.webservice.dati.GetImmagineEsitoResponse;
 import com.seda.payer.integraottico.webservice.dati.GetImmagineRequest;
 import com.seda.payer.integraottico.webservice.dati.GetImmagineResponse;
 import com.seda.payer.integraottico.webservice.dati.GetImmaginiListRequest;
@@ -1710,4 +1712,67 @@ public class OtticoFacadeBean extends BaseFacadeHandler {
 		return null;
 	}
 	//PG150290_002 - fine
+	
+	//PAGONET-567 SB - INIZIO
+	public String stampaImmagineEsito(String idDocBarcode, String flagAccesso, WebServiceInfo wsInfo, String dbSchemaCodSocieta) throws FacadeException{
+		List<String> listaReportNames = new ArrayList<String>();
+		try {	
+			//IMMAGINI
+			//Recupero immagini documento (integraOttico)
+			GetImmagineEsitoRequest request = new GetImmagineEsitoRequest(idDocBarcode, flagAccesso);
+			GetImmagineEsitoResponse response = null;
+			IntegraOtticoSOAPBindingStub integraOtticoPort = null;
+			try {
+				IntegraOtticoServiceLocator serviceLocator = new IntegraOtticoServiceLocator();
+				if (wsInfo.getFlagWebserviceOttico().equals("P")) //richiamo l'integraottico locale (Payer)
+				{
+					integraOtticoPort = (IntegraOtticoSOAPBindingStub)serviceLocator.getIntegraOtticoPort(new URL(getWsIntegraOtticoUrl()));
+				}
+				else 
+				{
+					if(wsInfo.getUserWebService().trim().equals(""))
+					{
+						logger.info("Chiamata all'integraottico dell'ente alla URL: " + wsInfo.getIndirizzoWebService());  
+						integraOtticoPort = (IntegraOtticoSOAPBindingStub)serviceLocator.getIntegraOtticoPort(new URL(wsInfo.getIndirizzoWebService()));
+					}
+					else
+					{
+						logger.info("Chiamata all'integraottico dell'ente alla URL: " + wsInfo.getIndirizzoWebService() + " User: " + wsInfo.getUserWebService() + " Pwd: " + wsInfo.getPassWebService());
+						integraOtticoPort = (IntegraOtticoSOAPBindingStub)serviceLocator.getIntegraOtticoPort(new URL(wsInfo.getIndirizzoWebService()), wsInfo.getUserWebService(), wsInfo.getPassWebService());
+					}
+				}
+				
+				if (integraOtticoPort != null)
+				{
+					setCodSocietaHeaderIntegraOttico(integraOtticoPort, dbSchemaCodSocieta);
+					response = integraOtticoPort.getImmagineEsito(request);
+				}
+				else
+					logger.error("Errore durante l'inizializzazione del webservice integraottico");
+
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			} catch (ServiceException e) {
+				e.printStackTrace();
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}	
+			
+			if (response != null && response.getEsito().equals("00") && 
+					response.getDocumentoEsito() != null)
+			{
+				FileEstensione fileEstensione = response.getDocumentoEsito().getFileEstensione();
+				String nomeReport = response.getDocumentoEsito().getNomeFisicoImmagine();
+				FileUtility.wr(fileEstensione.getFileByte(), this.getOutputDirectoryPdf(), nomeReport);
+				listaReportNames.add(this.getOutputDirectoryPdf() + nomeReport);
+				if (listaReportNames.size() > 0) return this.getOutputDirectoryPdf()+nomeReport;	
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			logger.error("stampaImmagineEsito failed, generic error due to: ", ex);
+		} 
+		
+		return null;
+	}
+	//PAGONET-567 SB - FINE
 }
