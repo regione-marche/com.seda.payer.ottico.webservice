@@ -85,7 +85,11 @@ xmlns:ns1="http://xml.apache.org/axis/wsdd/">
         <parameter qname="pns:StampaImmagineRequest" xmlns:pns="http://dati.webservice.ottico.payer.seda.com" type="tns:>StampaImmagineRequest" xmlns:tns="http://dati.webservice.ottico.payer.seda.com"/>
         <fault name="OtticoFaultException" qname="fns:Fault" xmlns:fns="http://srv.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.webservice.ottico.payer.seda.com"/>
       </operation>
-      <parameter name="allowedMethods" value="stampaBollettino stampaImmagineContenzioso getListaImmagini verificaConfigurazioneOttico stampaRelata recuperaTemplate elaboraFlussiImg logElaborazioneFlussiImg stampaDocumento verificaFlusso stampaQuietanza stampaImmagine"/>
+      <operation name="stampaImmagineEsito" qname="stampaImmagineEsito" returnQName="retNS:StampaImmagineEsitoResponse" xmlns:retNS="http://dati.webservice.ottico.payer.seda.com" returnType="rtns:>StampaImmagineEsitoResponse" xmlns:rtns="http://dati.webservice.ottico.payer.seda.com" soapAction="" >
+        <parameter qname="pns:StampaImmagineEsitoRequest" xmlns:pns="http://dati.webservice.ottico.payer.seda.com" type="tns:>StampaImmagineEsitoRequest" xmlns:tns="http://dati.webservice.ottico.payer.seda.com"/>
+        <fault name="OtticoFaultException" qname="fns:Fault" xmlns:fns="http://srv.webservice.ottico.payer.seda.com" class="com.seda.payer.ottico.webservice.srv.FaultType" type="tns:FaultType" xmlns:tns="http://srv.webservice.ottico.payer.seda.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="verificaConfigurazioneOttico getListaImmagini recuperaTemplate logElaborazioneFlussiImg verificaFlusso stampaImmagineEsito stampaQuietanza stampaImmagine stampaBollettino stampaImmagineContenzioso elaboraFlussiImg stampaRelata stampaDocumento"/>
 
       <typeMapping
         xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
@@ -103,6 +107,24 @@ xmlns:ns1="http://xml.apache.org/axis/wsdd/">
         deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
         encodingStyle=""
       />
+      
+      <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>StampaImmagineEsitoRequest"
+        type="java:com.seda.payer.ottico.webservice.dati.StampaImmagineEsitoRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+            <typeMapping
+        xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
+        qname="ns:>StampaImmagineEsitoResponse"
+        type="java:com.seda.payer.ottico.webservice.dati.StampaImmagineEsitoResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      
       <typeMapping
         xmlns:ns="http://dati.webservice.ottico.payer.seda.com"
         qname="ns:>StampaQuietanzaRequest"

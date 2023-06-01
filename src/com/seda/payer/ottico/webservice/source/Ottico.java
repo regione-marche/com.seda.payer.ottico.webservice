@@ -36,6 +36,8 @@ import com.seda.payer.ottico.webservice.dati.StampaDocumentoRequest;
 import com.seda.payer.ottico.webservice.dati.StampaDocumentoResponse;
 import com.seda.payer.ottico.webservice.dati.StampaImmagineContenziosoRequest;
 import com.seda.payer.ottico.webservice.dati.StampaImmagineContenziosoResponse;
+import com.seda.payer.ottico.webservice.dati.StampaImmagineEsitoRequest;
+import com.seda.payer.ottico.webservice.dati.StampaImmagineEsitoResponse;
 import com.seda.payer.ottico.webservice.dati.StampaImmagineRequest;
 import com.seda.payer.ottico.webservice.dati.StampaImmagineResponse;
 import com.seda.payer.ottico.webservice.dati.StampaQuietanzaRequest;
@@ -601,4 +603,35 @@ public class Ottico extends WebServiceHandler implements com.seda.payer.ottico.w
 			return res;
 		}
 	//PG150290_002 - fine
+	 //PAGONET-567 SB - INIZIO
+	   public StampaImmagineEsitoResponse stampaImmagineEsito(StampaImmagineEsitoRequest in) throws RemoteException, FaultType {
+			
+			String reportPath = null;
+			StampaImmagineEsitoResponse res = new StampaImmagineEsitoResponse();
+			
+			try {
+		
+				OtticoFacadeBean bean = getFacadeService();
+				
+				WebServiceInfo wsInfo = new WebServiceInfo(in.getIndirizzoWebServiceOttico(), 
+						in.getUserWebServiceOttico(), in.getPasswordWebServiceOttico(), "", 
+						new WebServiceInfoType(in.getFlagWebServiceOttico()));
+
+				reportPath = bean.stampaImmagineEsito(in.getIdDocBarcode(), in.getFlagAccesso(), wsInfo, dbSchemaCodSocieta);
+				if (reportPath != null && reportPath.length() > 0)
+				{
+					res.setFileName(reportPath);
+					res.setResponse(new ResponseType(ResponseTypeRetCode.value1, "Success"));
+					return res;
+				}
+			
+			} catch(Exception e) {
+				error("stampaImmagineEsito failed, generic error due to: ", e);
+			}
+			
+			res.setFileName(null);
+			res.setResponse(new ResponseType(ResponseTypeRetCode.value2, "Generic Err"));
+			return res;
+		}
+	 //PAGONET-567 SB - FINE
 }

@@ -112,6 +112,15 @@
 	</wsdl:message>
 	<!-- PG150290_002 - end -->
 	
+	<!-- PAGONET-567 SB - INIZIO -->
+	<wsdl:message name="StampaImmagineEsitoRequest">
+		<wsdl:part name="in" element="sd:StampaImmagineEsitoRequest" />
+	</wsdl:message>
+	<wsdl:message name="StampaImmagineEsitoResponse">
+		<wsdl:part name="out" element="sd:StampaImmagineEsitoResponse" />
+	</wsdl:message>
+	<!-- PAGONET-567 SB - FINE -->
+	
 	<!-- End_Message -->
 	<wsdl:message name="Fault">
 		<wsdl:part name="fault" element="srv:Fault"></wsdl:part>
@@ -193,6 +202,13 @@
 			<wsdl:fault name="OtticoFaultException" message="tns:Fault"></wsdl:fault>
 		</wsdl:operation>
 		<!-- PG150290_002 - fine -->
+		<!-- PAGONET-567 SB - INIZIO -->
+		<wsdl:operation name="stampaImmagineEsito">
+			<wsdl:input message="tns:StampaImmagineEsitoRequest"/>
+			<wsdl:output message="tns:StampaImmagineEsitoResponse" />
+			<wsdl:fault name="OtticoFaultException" message="tns:Fault"></wsdl:fault>
+		</wsdl:operation>
+		<!-- PAGONET-567 SB - FINE -->
 	</wsdl:portType>
 
 	<wsdl:binding name="OtticoSOAPBinding" type="tns:OtticoInterface">
@@ -364,6 +380,20 @@
 			</wsdl:fault>
 		</wsdl:operation>
 		<!-- PG150290_002 - fine -->
+		<!-- PAGINET-567 SB - INIZIO -->
+		<wsdl:operation name="stampaImmagineEsito">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="OtticoFaultException">
+				<soap:fault name="OtticoFaultException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<!-- PAGINET-567 SB - FINE -->
 	</wsdl:binding>
 
 	<wsdl:service name="OtticoService">
