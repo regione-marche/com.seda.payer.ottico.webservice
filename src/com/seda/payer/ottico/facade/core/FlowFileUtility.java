@@ -7,19 +7,21 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import org.apache.log4j.Logger;
+
+
+import com.seda.commons.logger.LoggerWrapper;
 
 /**
  * @author aniello.labua
  */
 public class FlowFileUtility {
 
-	private Logger log;
+	private LoggerWrapper log;
 	private String flowPath;
 	private FlowParameter parameter;
 	private FlowInfo flowInfo;
 
-	public FlowFileUtility(FlowParameter parameter, Logger logger){
+	public FlowFileUtility(FlowParameter parameter, LoggerWrapper logger){
 		this.log = logger;
 		log.debug("\nTEST - FLOW FILE UTILITY START: " + parameter);
 		this.flowPath = parameter.getPathCompletoNomeFileDati();

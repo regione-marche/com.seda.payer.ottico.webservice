@@ -16,7 +16,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 import java.util.logging.Level;
 
-import org.apache.log4j.Logger;
+
 import org.eclipse.birt.core.framework.Platform;
 import org.eclipse.birt.report.engine.api.EngineConfig;
 import org.eclipse.birt.report.engine.api.EngineConstants;
@@ -26,6 +26,8 @@ import org.eclipse.birt.report.engine.api.IReportRunnable;
 import org.eclipse.birt.report.engine.api.IRunAndRenderTask;
 import org.eclipse.birt.report.engine.api.PDFRenderOption;
 
+import com.seda.commons.logger.CustomLoggerManager;
+import com.seda.commons.logger.LoggerWrapper;
 import com.seda.commons.properties.tree.PropertiesTree;
 import com.seda.payer.ottico.webservice.dto.InformazioniStampa;
 import com.seda.payer.ottico.webservice.dati.RecuperaTemplateResponse;
@@ -39,7 +41,8 @@ public class ReportCreator {
 	private String pathLogoReport;
 	private Level level = Level.WARNING;
 	private PropertiesTree propertiesTree;
-	private Logger logger;
+	//private Logger logger;
+	private LoggerWrapper logger = CustomLoggerManager.get(ReportCreator.class);
 	protected String defaultTemplate;
 
 	public Level getLevel() {
@@ -76,7 +79,7 @@ public class ReportCreator {
 	 * @param propertiesTree
 	 */
 	public ReportCreator(String birtHomeEngine, String birtHomeLogs,
-			String outputDirectoryPdf, String birtDesignPath, String pathLogoReport, Logger logger, PropertiesTree propertiesTree) {
+			String outputDirectoryPdf, String birtDesignPath, String pathLogoReport, LoggerWrapper logger, PropertiesTree propertiesTree) {
 		this.birtHomeEngine = birtHomeEngine;
 		this.birtHomeLogs = birtHomeLogs;
 		this.outputDirectoryPdf = outputDirectoryPdf;

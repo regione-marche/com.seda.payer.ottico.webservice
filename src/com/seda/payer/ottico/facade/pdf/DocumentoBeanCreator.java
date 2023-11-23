@@ -3,7 +3,7 @@ package com.seda.payer.ottico.facade.pdf;
 import java.io.Serializable;
 import java.sql.SQLException;
 
-import org.apache.log4j.Logger;
+import com.seda.commons.logger.LoggerWrapper;
 import com.seda.payer.commons.utility.StringUtility;
 /**
  * @author marco.montisano
@@ -11,11 +11,11 @@ import com.seda.payer.commons.utility.StringUtility;
 public class DocumentoBeanCreator implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private Logger logger;
+	private LoggerWrapper logger;
 	/**
 	 * Default constructor 
 	 */
-	public DocumentoBeanCreator(Logger logger) {
+	public DocumentoBeanCreator(LoggerWrapper logger) {
 		this.logger = logger;
 	}
 	/**

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Properties>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss} [%t] %-5p %c - %m%n</Property>
+    </Properties>
+    <Appenders>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+        <RollingFile name="com.seda.payer.ottico.webservice-ws"
+                	  fileName="../standalone/log/com.seda.payer.ottico.webservice-ws.log"
+                	  filePattern="%d{yyyy-MM-dd}-com.seda.payer.ottico.webservice-ws.%i.log.gz"
+                	  ignoreExceptions="false" filePermissions="rw-rw-r--">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+			<!-- <JsonTemplateLayout eventTemplateUri="classpath:ElasticsearchJsonEventLayoutV1.json"/> -->
+            <Policies>
+                <SizeBasedTriggeringPolicy size="60MB" />
+            </Policies>
+            <!-- <DefaultRolloverStrategy max="10" /> -->
+            <ThresholdFilter level="INFO"/>
+        </RollingFile>
+        <RollingFile name="com.seda.payer.ottico.webservice-ws-error"
+                	 fileName="../standalone/log/com.seda.payer.ottico.webservice-ws-error.log"
+                	 filePattern="com.seda.payer.ottico.webservice-ws-error.%i.log"
+                     ignoreExceptions="false" filePermissions="rw-rw-r--">
+			<JsonTemplateLayout eventTemplateUri="classpath:ElasticsearchJsonEventLayoutV1.json"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="60MB" />
+            </Policies>
+            <ThresholdFilter level="ERROR"/>
+        </RollingFile>
+        
+    </Appenders>
+    <Loggers>
+		<Logger name="com.seda.payer.ottico.webservice" level="DEBUG" additivity="false">
+			<AppenderRef ref="com.seda.payer.ottico.webservice-ws" />
+            <!-- <AppenderRef ref="com.seda.payer.ottico.webservice-ws-debug" /> -->
+            <AppenderRef ref="com.seda.payer.ottico.webservice-ws-error" />
+		</Logger>         
+        <Root level="INFO" >
+            <AppenderRef ref="com.seda.payer.ottico.webservice-ws" />
+            <AppenderRef ref="STDOUT" />
+        </Root>
+    </Loggers>
+</Configuration>
