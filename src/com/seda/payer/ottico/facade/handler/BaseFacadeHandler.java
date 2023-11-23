@@ -6,9 +6,6 @@ import java.util.Properties;
 import com.seda.commons.logger.CustomLoggerManager;
 import com.seda.commons.logger.LoggerWrapper;
 import com.seda.commons.properties.tree.PropertiesTree;
-//inizio LP PG200070 - 20200813
-//import com.seda.compatibility.SystemVariable;
-//fine LP PG200070 - 20200813
 import com.seda.data.dao.DAOHelper;
 import com.seda.j2ee5.jndi.JndiProxy;
 import com.seda.j2ee5.jndi.JndiProxyException;
