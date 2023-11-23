@@ -2,10 +2,9 @@ package com.seda.payer.ottico.facade.handler;
 
 import java.sql.Connection;
 import java.util.Properties;
-import org.apache.log4j.Hierarchy;
-import org.apache.log4j.Logger;
 
-import com.seda.commons.logger.LoggerHierarchyServer;
+import com.seda.commons.logger.CustomLoggerManager;
+import com.seda.commons.logger.LoggerWrapper;
 import com.seda.commons.properties.tree.PropertiesTree;
 //inizio LP PG200070 - 20200813
 //import com.seda.compatibility.SystemVariable;
@@ -40,7 +39,8 @@ public abstract class BaseFacadeHandler {
 	//inizio LP PG200070 - 20200813
 	//private PropertiesTree propsTree;
 	//fine LP PG200070 - 20200813
-	protected Logger logger;
+	//protected Logger logger;
+	protected LoggerWrapper logger = CustomLoggerManager.get(BaseFacadeHandler.class);
 	//protected SessionContext ctx;
 	public final String DBSCHEMACODSOCIETA = "dbSchemaCodSocieta";
 	
@@ -159,7 +159,7 @@ public abstract class BaseFacadeHandler {
 //            LoggerHierarchyServer loggerHierarchyServer = new LoggerHierarchyServer();
 //            Hierarchy hierarchy = loggerHierarchyServer.configure(log4jConfiguration);
             
-            logger = Logger.getLogger("FACADE");
+            //logger = Logger.getLogger("FACADE");
             logger.info("<com.seda.payer.ottico.facade - applicationStartup()>");
 //            this.propsTree = propertiesTree;
 		} catch (Exception e) { throw e; }

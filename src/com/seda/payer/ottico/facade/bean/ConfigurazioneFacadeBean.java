@@ -75,11 +75,11 @@ public class ConfigurazioneFacadeBean extends BaseFacadeHandler {
 			TemplateDocumentoDao daoObj = new TemplateDocumentoDao(conn, getSchema(dbSchemaCodSocieta));
 
 			TemplateDocumento templateDocumento = daoObj.doDetail(null,null, null, null, null, null,null,null,chiaveTemplate); 
-			logger.info(templateDocumento);
+			logger.info(templateDocumento.toString());
 
 			TemplateDocumentoDto dettaglio = new TemplateDocumentoDto(templateDocumento);
 
-			logger.info(dettaglio);
+			logger.info(dettaglio.toString());
 
 			return dettaglio;
 
@@ -229,7 +229,7 @@ public class ConfigurazioneFacadeBean extends BaseFacadeHandler {
 			
 			Configurazione configurazione = dto.toBean(dto);
 			
-			logger.info(configurazione);
+			logger.info(configurazione.toString());
 			
 			new ConfigurazioneDao(conn, getSchema(dbSchemaCodSocieta)).doInsert(configurazione);
 

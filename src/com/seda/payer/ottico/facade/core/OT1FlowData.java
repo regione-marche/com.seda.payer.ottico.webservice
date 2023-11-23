@@ -3,13 +3,15 @@ package com.seda.payer.ottico.facade.core;
 import java.io.Serializable;
 import java.util.Date;
 
-import org.apache.log4j.Logger;
+
+
+import com.seda.commons.logger.LoggerWrapper;
 /**
  * @author aniello.labua
  */
 public class OT1FlowData extends TracciatiOtticoInfo implements Serializable{
 	
-	private Logger log;
+	private LoggerWrapper log;
 	private static final long serialVersionUID = 1L;
 
 	private String documento;
@@ -33,7 +35,7 @@ public class OT1FlowData extends TracciatiOtticoInfo implements Serializable{
 		this.nomeFisicoImg = nomeFisicoImg;
 	}
 	
-	public OT1FlowData(String stringFlow, Logger aLog){
+	public OT1FlowData(String stringFlow, LoggerWrapper aLog){
 		this.log = aLog;
 		log.debug("Lunghezza flusso: " + stringFlow.length());
 		super.setFlowType(stringFlow.substring(0,3).trim());

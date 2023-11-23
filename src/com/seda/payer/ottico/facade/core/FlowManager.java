@@ -8,18 +8,20 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Serializable;
 
-import org.apache.log4j.Logger;
+import com.seda.commons.logger.LoggerWrapper;
+
+
 /**
  * @author aniello.labua
  */
 public class FlowManager implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private Logger log;
+	private LoggerWrapper log;
 	private DataInputStream inStream;
 	private FlowFileUtility fileUtil;
 
-	public FlowManager(FlowFileUtility fileUtil, Logger logger){
+	public FlowManager(FlowFileUtility fileUtil, LoggerWrapper logger){
 		this.fileUtil = fileUtil;
 		this.log = logger;
 		log.debug("TEST: IL FLOW MANAGER E' STATO AVVIATO CON LE SEGUENTI INFORMAZIONI: " + 

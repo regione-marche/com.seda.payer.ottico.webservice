@@ -2,19 +2,20 @@ package com.seda.payer.ottico.facade.core;
 
 import java.io.Serializable;
 
-import org.apache.log4j.Logger;
 
+
+import com.seda.commons.logger.LoggerWrapper;
 import com.seda.payer.core.bean.Configurazione;
 /**
  * @author aniello.labua
  */
 public class OT0FlowData extends TracciatiOtticoInfo implements Serializable {
 
-	private Logger log;
+	private LoggerWrapper log;
 	private static final long serialVersionUID = 1L;
 	private String flussoImg;
 
-	public OT0FlowData(String stringFlow, Logger aLog){
+	public OT0FlowData(String stringFlow, LoggerWrapper aLog){
 		this.log = aLog;
 		log.debug("Lunghezza flusso: " + stringFlow.length());
 		super.setFlowType(stringFlow.substring(0,3).trim());

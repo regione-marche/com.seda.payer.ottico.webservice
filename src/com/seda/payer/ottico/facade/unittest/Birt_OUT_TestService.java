@@ -4,8 +4,9 @@ import java.rmi.RemoteException;
 
 import javax.xml.rpc.ServiceException;
 
-import org.apache.log4j.Logger;
 
+import com.seda.commons.logger.CustomLoggerManager;
+import com.seda.commons.logger.LoggerWrapper;
 import com.seda.payer.ottico.facade.pdf.DocumentoBeanCreator;
 import com.seda.payer.ottico.facade.pdf.DocumentoType;
 import com.seda.payer.ottico.facade.pdf.DocumentoXMLWriter;
@@ -22,8 +23,8 @@ public class Birt_OUT_TestService {
 	final static String birtHomeEngine = "D:\\SWsviluppo\\birt-runtime-2_5_2\\ReportEngine\\";
 	final static String birtHomeLogs = "D:\\FileTemporanei\\Payer\\Log\\BirtLog";
 	final static String outputDirectoryPdf = "\\\\10.10.9.106\\BirtReport\\iargenio\\";
-	final static String pathLogoReport = "D:/ConfigFiles/Payer/BirtReport/imglogo/LogoLepida.png"; 
-
+	final static String pathLogoReport = "D:/ConfigFiles/Payer/BirtReport/imglogo/LogoLepida.png";
+	final static LoggerWrapper logger = CustomLoggerManager.get(Birt_OUT_TestService.class);
 	public Birt_OUT_TestService() {
 	}
 
@@ -49,8 +50,9 @@ public class Birt_OUT_TestService {
 				reqDoc.setUrlIntegrazione("I");
 			}
 			RecuperaListaDocResponse respDoc = ecCaller.recuperaListaDoc(reqDoc);
-
-			DocumentoBeanCreator beanCreator = new DocumentoBeanCreator(Logger.getLogger(Birt_OUT_TestService.class));
+			
+			
+			DocumentoBeanCreator beanCreator = new DocumentoBeanCreator(logger);
 			DocumentoXMLWriter writer = new DocumentoXMLWriter(birtDesignPath);
 
 			if (respDoc != null) {
